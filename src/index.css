@@ -1,17 +1,17 @@
 @font-face {
-	font-family: 'FiraSans';
-	src: local('FiraSans'), url(./fonts/FiraSans-Regular.ttf) format('truetype');
+  font-family: "FiraSans";
+  src: local("FiraSans"), url(./fonts/FiraSans-Regular.ttf) format("truetype");
 }
 * {
-	margin: 0;
-	padding: 0;
-	background: #fefefe;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 body {
-	font-family: 'FiraSans';
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-family: "FiraSans";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /*# sourceMappingURL=index.css.map */
