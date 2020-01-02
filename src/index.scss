@@ -2,10 +2,10 @@
 	font-family: 'FiraSans';
 	src: local('FiraSans'), url(./fonts/FiraSans-Regular.ttf) format('truetype');
 }
+
 * {
 	margin: 0;
 	padding: 0;
-	background: #fefefe;
 }
 
 body {
@@ -13,5 +13,3 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
-/*# sourceMappingURL=index.css.map */
