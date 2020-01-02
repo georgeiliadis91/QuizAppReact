@@ -1,11 +1,13 @@
 import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
-
+import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import app from '../firebase/firebase';
 import { AuthContext } from '../contexts/Auth';
 
 const Login = ({ history }) => {
+	const alert = useAlert();
+
 	const handleLogin = useCallback(
 		async event => {
 			event.preventDefault();
@@ -14,9 +16,12 @@ const Login = ({ history }) => {
 				await app
 					.auth()
 					.signInWithEmailAndPassword(email.value, password.value);
+
 				history.push('/');
+				alert.success('logged in');
 			} catch (error) {
-				alert(error);
+				alert.error(error.message);
+				// console.log(error);
 			}
 		},
 		[history]

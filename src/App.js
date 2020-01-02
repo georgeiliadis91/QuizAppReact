@@ -8,6 +8,14 @@ import Dashboard from './routes/Dashboard';
 import NotFound from './routes/NotFound';
 import { AuthProvider } from './contexts/Auth';
 import PrivateRoute from './components/PrivateRoute';
+import AlertTemplate from 'react-alert-template-basic';
+import { positions, Provider } from 'react-alert';
+import app from './firebase/firebase';
+
+const options = {
+	timeout: 5000,
+	position: positions.BOTTOM_CENTER
+};
 
 function App() {
 	let navigation = (
@@ -28,22 +36,25 @@ function App() {
 	);
 
 	return (
-		<AuthProvider>
-			<Router>
-				<div className="App">
-					<h2>Καλώς ήρθατε!</h2>
-					{navigation}
-					<Switch>
-						<PrivateRoute exact path="/" component={Home} />
-						<PrivateRoute exact path="/dashboard/" component={Dashboard} />
-						<PrivateRoute exact path="/editquiz/:id" component={EditQuiz} />
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/signup" component={SignUp} />
-						<Route exact path="*" component={NotFound} />
-					</Switch>
-				</div>
-			</Router>
-		</AuthProvider>
+		<Provider template={AlertTemplate} {...options}>
+			<AuthProvider>
+				<Router>
+					<div className="App">
+						<h2>Καλώς ήρθατε!</h2>
+						<button onClick={() => app.auth().signOut()}>Sign out</button>
+						{navigation}
+						<Switch>
+							<PrivateRoute exact path="/" component={Home} />
+							<PrivateRoute exact path="/dashboard/" component={Dashboard} />
+							<PrivateRoute exact path="/editquiz/:id" component={EditQuiz} />
+							<Route exact path="/login" component={Login} />
+							<Route exact path="/signup" component={SignUp} />
+							<Route exact path="*" component={NotFound} />
+						</Switch>
+					</div>
+				</Router>
+			</AuthProvider>
+		</Provider>
 	);
 }
 

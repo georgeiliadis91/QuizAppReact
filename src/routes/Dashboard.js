@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
+import { useAlert } from 'react-alert';
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
@@ -11,6 +12,7 @@ const override = css`
 `;
 
 const Dashboard = ({ history }) => {
+	const alert = useAlert();
 	const [quizes, setQuizes] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -21,13 +23,29 @@ const Dashboard = ({ history }) => {
 				setLoading(true);
 			})
 			.catch(err => {
-				console.log(err);
+				alert.error(err.message);
 			});
 	};
 
 	const handleEdit = id => {
 		history.push('/editquiz/' + id);
 	};
+
+	const handleSubmit = useCallback(async event => {
+		event.preventDefault();
+		const { name } = event.target.elements;
+
+		axios
+			.post('http://geoili.me:4000/quizes/', {
+				name: name.value
+			})
+			.then(res => {
+				setLoading(true);
+			})
+			.catch(err => {
+				alert.error(err);
+			});
+	}, []);
 
 	useEffect(() => {
 		setQuizes([]);
@@ -50,20 +68,27 @@ const Dashboard = ({ history }) => {
 				setLoading(false);
 			})
 			.catch(error => {
-				console.log(error);
+				alert.error(error.message);
 			});
 	}, [loading]);
 
 	return (
 		<div>
 			<h2>Dashboard</h2>
+			<h3>Create new Quiz</h3>
+			<form onSubmit={handleSubmit}>
+				<label>
+					Quiz name:
+					<input name="name" type="name" placeholder="Enter name..." />
+				</label>
+				<button type="submit">Create</button>
+			</form>
 			<ul>
 				{loading ? (
 					<ClipLoader
 						css={override}
 						size={150}
-						//size={"150px"} this also works
-						color={'#123abc'}
+						color={'coral'}
 						loading={loading}
 					/>
 				) : (

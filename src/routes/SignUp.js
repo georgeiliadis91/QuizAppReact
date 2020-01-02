@@ -2,8 +2,11 @@ import React, { useCallback } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import app from '../firebase/firebase';
+import { useAlert } from 'react-alert';
 
 const SignUp = ({ history }) => {
+	const alert = useAlert();
+
 	const handleSignUp = useCallback(
 		async event => {
 			event.preventDefault();
@@ -16,10 +19,10 @@ const SignUp = ({ history }) => {
 						.createUserWithEmailAndPassword(email.value, password.value);
 					history.push('/');
 				} catch (error) {
-					alert(error);
+					alert.error(error.message);
 				}
 			} else {
-				alert('passwords do not match!');
+				alert.error('Passwords do not match.');
 			}
 		},
 		[history]
