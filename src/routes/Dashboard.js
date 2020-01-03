@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
-import { useAlert } from 'react-alert';
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
@@ -55,7 +55,7 @@ const Dashboard = ({ history }) => {
 				const quizes = res.data;
 
 				quizes.map(quiz => {
-					setQuizes(previousQuizes => [
+					return setQuizes(previousQuizes => [
 						...previousQuizes,
 						{
 							id: quiz._id,

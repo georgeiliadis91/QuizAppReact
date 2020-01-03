@@ -1,128 +1,120 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useCallback, useState, Fragment } from 'react';
 import axios from 'axios';
 import { useAlert } from 'react-alert';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { css } from '@emotion/core';
 
 // Link to the form example from codepen
+//https://codesandbox.io/s/react-dynamic-form-fields-3fjbd?from-embed
+
+// const handleRemoveFields = index => {
+// 	const values = [...inputFields];
+// 	values.pop();
+// 	setInputFields(values);
+// };
+
+// Can be a string as well. Need to ensure each key-value pair ends with ;
+const override = css`
+	display: block;
+	margin: 0 auto;
+	border-color: red;
+`;
 
 const EditQuiz = ({ match }) => {
 	const { id } = match.params;
-	// const alert = useAlert();
+	const [loading, setLoading] = useState(true);
+	const [quiz, setQuiz] = useState(['']);
 
-	// const [inputFields, setInputFields] = useState([
-	// 	{
-	// 		questionTitle: '',
-	// 		questionA: '',
-	// 		questionB: '',
-	// 		questionC: '',
-	// 		questionD: '',
-	// 		correctAnswer: ''
-	// 	}
-	// ]);
+	const alert = useAlert();
 
-	// const handleAddFields = () => {
-	// 	const values = [...inputFields];
-	// 	values.push({
-	// 		questionTitle: '',
-	// 		questionA: '',
-	// 		questionB: '',
-	// 		questionC: '',
-	// 		questionD: '',
-	// 		correctAnswer: ''
-	// 	});
-	// 	setInputFields(values);
-	// };
+	const handleSubmit = useCallback(async event => {
+		event.preventDefault();
+		const { name } = event.target.elements;
 
-	// const handleRemoveFields = index => {
-	// 	const values = [...inputFields];
-	// 	values.pop();
-	// 	setInputFields(values);
-	// };
+		axios
+			.put('http://geoili.me:4000/quizes/' + id, {
+				name: name.value
+			})
+			.then(res => {
+				setLoading(true);
+			})
+			.catch(err => {
+				alert.error(err);
+			});
+	}, []);
 
-	// // const handleInputChange = (index, event) => {
-	// // 	const values = [...inputFields];
-	// // 	if (event.target.name === 'firstName') {
-	// // 		values[index].firstName = event.target.value;
-	// // 	} else {
-	// // 		values[index].lastName = event.target.value;
-	// // 	}
+	useEffect(() => {
+		setQuiz([]);
+		axios
+			.get('http://geoili.me:4000/quizes/' + id)
+			.then(res => {
+				const quiz = res.data;
 
-	// // 	setInputFields(values);
-	// // };
+				setQuiz({
+					id: quiz._id,
+					name: quiz.name,
+					questions: quiz.questions
+				});
 
-	// const handleInputChange = (index, event) => {
-	// 	setInputFields(previousValues => [
-	// 		...previousValues,
-	// 		{ [event.target.name]: event.target.value }
-	// 	]);
-	// };
-
-	// const handleSubmit = e => {
-	// 	e.preventDefault();
-	// 	console.log('inputFields', inputFields);
-	// };
-
-	// useEffect(() => {
-	// 	axios
-	// 		.get('http://geoili.me:4000/quizes/' + id)
-	// 		.then(res => {
-	// 			console.log(res.data);
-	// 		})
-	// 		.catch(err => {
-	// 			alert.error(err.message);
-	// 		});
-	// }, []);
+				console.log(quiz.questions);
+				setLoading(false);
+			})
+			.catch(error => {
+				alert.error(error.message);
+			});
+	}, []);
 
 	return (
 		<div>
 			<h3>ID: {id}</h3>
-			{/* <h1>Edit quiz</h1>
-			<form onSubmit={handleSubmit}>
-				<button type="button" onClick={() => handleAddFields()}>
-					+
-				</button>
-				<div>
-					{inputFields.map((inputField, index) => (
-						<Fragment key={`${inputField}~${index}`}>
-							<div>
-								<label htmlFor="firstName">First Name</label>
-								<input
-									type="text"
-									id="firstName"
-									name="firstName"
-									value={inputField.firstName}
-									onChange={event => handleInputChange(index, event)}
-								/>
-							</div>
-							<div className="form-group col-sm-4">
-								<label htmlFor="lastName">Last Name</label>
-								<input
-									type="text"
-									id="lastName"
-									name="lastName"
-									value={inputField.lastName}
-									onChange={event => handleInputChange(index, event)}
-								/>
-							</div>
-							<div>
-								<button type="button" onClick={() => handleRemoveFields(index)}>
-									Remove
-								</button>
-							</div>
-						</Fragment>
-					))}
-				</div>
+			<ul>
+				{loading ? (
+					<ClipLoader
+						css={override}
+						size={150}
+						color={'coral'}
+						loading={loading}
+					/>
+				) : (
+					<form onSubmit={handleSubmit}>
+						<label>
+							Quiz name:
+							<input name="name" type="name" value={quiz.name} />
+						</label>
+						{quiz.questions.map(question => (
+							<div className="question-row">
+								<label>
+									Question:
+									<input
+										name="name"
+										type="name"
+										value={question.questionTitle}
+									/>
+								</label>
 
-				<button
-					className="btn btn-primary mr-2"
-					type="submit"
-					onSubmit={handleSubmit}
-				>
-					Save
-				</button>
+								<label>
+									Answer A:
+									<input name="name" type="name" value={question.answerA} />
+								</label>
+								<label>
+									Answer B:
+									<input name="name" type="name" value={question.answerB} />
+								</label>
+								<label>
+									Answer C:
+									<input name="name" type="name" value={question.answerC} />
+								</label>
+								<label>
+									Answer D:
+									<input name="name" type="name" value={question.answerD} />
+								</label>
+							</div>
+						))}
 
-				<br />
-				<pre>{JSON.stringify(inputFields, null, 2)}</pre>
-			</form> */}
+						<button type="submit">Submit Changes</button>
+					</form>
+				)}
+			</ul>
 		</div>
 	);
 };
