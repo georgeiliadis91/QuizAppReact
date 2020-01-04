@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState, Fragment } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import axios from 'axios';
 import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -7,11 +7,19 @@ import { css } from '@emotion/core';
 // Link to the form example from codepen
 //https://codesandbox.io/s/react-dynamic-form-fields-3fjbd?from-embed
 
-// const handleRemoveFields = index => {
-// 	const values = [...inputFields];
-// 	values.pop();
-// 	setInputFields(values);
-// };
+const test = {
+	name: 'Test 2',
+	questions: [
+		{
+			questionTitle: 'Question 1',
+			answerA: 'A',
+			answerB: 'B',
+			answerC: 'C',
+			answerD: 'D',
+			correctAnswer: 1
+		}
+	]
+};
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
@@ -35,28 +43,25 @@ const EditQuiz = ({ match }) => {
 			...previousValues,
 			questions: values
 		}));
-
-		console.log(values);
 	};
 
 	const handleRemoveFields = index => {
 		const values = quiz.questions;
 		values.splice(index, 1);
-		console.log(values);
+
 		setQuiz(previousValues => ({
 			...previousValues,
 			questions: values
 		}));
 	};
 
-	const handleSubmit = useCallback(async event => {
+	const handleSubmit = useCallback(event => {
 		event.preventDefault();
-		const { name } = event.target.elements;
 
 		axios
-			.put('http://geoili.me:4000/quizes/' + id, JSON.Stringify(quiz))
+			.post('http://geoili.me:4000/quizes/' + quiz._id, JSON.Stringify(test))
 			.then(res => {
-				setLoading(true);
+				// setLoading(true);
 			})
 			.catch(err => {
 				alert.error(err);
@@ -76,7 +81,6 @@ const EditQuiz = ({ match }) => {
 					questions: quiz.questions
 				});
 
-				console.log(quiz.questions);
 				setLoading(false);
 			})
 			.catch(error => {
