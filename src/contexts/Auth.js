@@ -13,9 +13,13 @@ export const AuthProvider = ({ children }) => {
 	});
 
 	useEffect(() => {
+		//firebase call with the setUseState methods to get user data
 		app.auth().onAuthStateChanged(setCurrentUser);
 		localStorage.setItem('userData', JSON.stringify(currentUser));
-		alert.success('logged in');
+		//Check if user data is empty
+		if (currentUser.length > 0) {
+			alert.success('logged in');
+		}
 	}, []);
 
 	return (
