@@ -27,20 +27,42 @@ const EditQuiz = ({ match }) => {
 
 	const alert = useAlert();
 
+	//========Funtions==========
+	const handleAddQuestion = () => {
+		const values = quiz.questions;
+		values.push({ answerA: 'asdasd', answerB: '123123' });
+		setQuiz(previousValues => ({
+			...previousValues,
+			questions: values
+		}));
+
+		console.log(values);
+	};
+
+	const handleRemoveFields = index => {
+		const values = quiz.questions;
+		values.splice(index, 1);
+		console.log(values);
+		setQuiz(previousValues => ({
+			...previousValues,
+			questions: values
+		}));
+	};
+
 	const handleSubmit = useCallback(async event => {
 		event.preventDefault();
 		const { name } = event.target.elements;
 
-		axios
-			.put('http://geoili.me:4000/quizes/' + id, {
-				name: name.value
-			})
-			.then(res => {
-				setLoading(true);
-			})
-			.catch(err => {
-				alert.error(err);
-			});
+		// axios
+		// 	.put('http://geoili.me:4000/quizes/' + id, {
+		// 		name: name.value
+		// 	})
+		// 	.then(res => {
+		// 		setLoading(true);
+		// 	})
+		// 	.catch(err => {
+		// 		alert.error(err);
+		// 	});
 	}, []);
 
 	useEffect(() => {
@@ -81,8 +103,8 @@ const EditQuiz = ({ match }) => {
 							Quiz name:
 							<input name="name" type="name" value={quiz.name} />
 						</label>
-						{quiz.questions.map(question => (
-							<div className="question-row">
+						{quiz.questions.map((question, index) => (
+							<div key={index} className="question-row">
 								<label>
 									Question:
 									<input
@@ -108,6 +130,9 @@ const EditQuiz = ({ match }) => {
 									Answer D:
 									<input name="name" type="name" value={question.answerD} />
 								</label>
+								<button onClick={() => handleRemoveFields(index)}>
+									Remove Question
+								</button>
 							</div>
 						))}
 
@@ -115,6 +140,7 @@ const EditQuiz = ({ match }) => {
 					</form>
 				)}
 			</ul>
+			<button onClick={() => handleAddQuestion()}>test</button>
 		</div>
 	);
 };

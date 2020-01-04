@@ -17,24 +17,24 @@ const options = {
 	position: positions.BOTTOM_CENTER
 };
 
-function App() {
-	let navigation = (
-		<ul>
-			<li>
-				<Link to="/">Home</Link>
-			</li>
-			<li>
-				<Link to="/dashboard">Dashboard</Link>
-			</li>
-			<li>
-				<Link to="/login">Login</Link>
-			</li>
-			<li>
-				<Link to="/signup">Signup</Link>
-			</li>
-		</ul>
-	);
+const navigation = (
+	<ul>
+		<li>
+			<Link to="/">Home</Link>
+		</li>
+		<li>
+			<Link to="/dashboard">Dashboard</Link>
+		</li>
+		<li>
+			<Link to="/login">Login</Link>
+		</li>
+		<li>
+			<Link to="/signup">Signup</Link>
+		</li>
+	</ul>
+);
 
+function App() {
 	return (
 		<Provider template={AlertTemplate} {...options}>
 			<AuthProvider>
