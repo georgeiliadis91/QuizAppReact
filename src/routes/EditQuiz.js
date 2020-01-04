@@ -53,16 +53,14 @@ const EditQuiz = ({ match }) => {
 		event.preventDefault();
 		const { name } = event.target.elements;
 
-		// axios
-		// 	.put('http://geoili.me:4000/quizes/' + id, {
-		// 		name: name.value
-		// 	})
-		// 	.then(res => {
-		// 		setLoading(true);
-		// 	})
-		// 	.catch(err => {
-		// 		alert.error(err);
-		// 	});
+		axios
+			.put('http://geoili.me:4000/quizes/' + id, JSON.Stringify(quiz))
+			.then(res => {
+				setLoading(true);
+			})
+			.catch(err => {
+				alert.error(err);
+			});
 	}, []);
 
 	useEffect(() => {
@@ -98,7 +96,7 @@ const EditQuiz = ({ match }) => {
 						loading={loading}
 					/>
 				) : (
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={() => handleSubmit()}>
 						<label>
 							Quiz name:
 							<input name="name" type="name" value={quiz.name} />
