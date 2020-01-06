@@ -13,18 +13,35 @@ import { css } from '@emotion/core';
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 
 const test = {
-	name: 'bananas',
+	name: 'Tralalix',
 	questions: [
 		{
+			questionTitle: 'asdasd',
+			answerA: '213652',
+			answerB: '236',
+			answerC: 'C23623',
+			answerD: 'Dwegweg',
+			correctAnswer: 1
+		},
+		{
 			questionTitle: 'Question 1',
-			answerA: 'A',
-			answerB: 'B',
-			answerC: 'C',
-			answerD: 'D',
+			answerA: 'gwegwegA',
+			answerB: 'Bwegweg',
+			answerC: 'Casgasg',
+			answerD: 'Dasgasg',
+			correctAnswer: 1
+		},
+		{
+			questionTitle: 'Qasmjutjkm 1',
+			answerA: 'asfasf',
+			answerB: 'Basfasf',
+			answerC: 'Casfasf',
+			answerD: 'Dasfasf',
 			correctAnswer: 1
 		}
 	]
 };
+
 const override = css`
 	display: block;
 	margin: 0 auto;
@@ -62,12 +79,9 @@ const EditQuiz = ({ match }) => {
 		event.preventDefault();
 
 		axios
-			.patch(
-				'http://geoili.me:4000/quizes/5e0e4b730b01ec775e1d54b5',
-				JSON.stringify(test)
-			)
+			.patch('http://geoili.me:4000/quizes/5e0faca40b01ec775e1d54bf', test)
 			.then(res => {
-				// setLoading(true);
+				setLoading(true);
 				console.log(res.data);
 			})
 			.catch(err => {
