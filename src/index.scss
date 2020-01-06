@@ -14,3 +14,15 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+//admin dashboard
+
+#admin-dashboard {
+	li {
+		border: solid 1px #777;
+		// temporary
+		label {
+			margin: 0.25rem 0.5rem;
+		}
+	}
+}

@@ -73,7 +73,7 @@ const Dashboard = ({ history }) => {
 	}, [loading]);
 
 	return (
-		<div>
+		<div id="admin-dashboard">
 			<h2>Dashboard</h2>
 			<h3>Create new Quiz</h3>
 			<form onSubmit={handleSubmit}>
@@ -94,9 +94,17 @@ const Dashboard = ({ history }) => {
 				) : (
 					quizes.map(quiz => (
 						<li key={quiz.id}>
-							{quiz.name}
+							<label>
+								Όνομα:
+								{quiz.name}
+							</label>
+							<label></label>
+							Ημ. Δημιουργίας:
 							{quiz.createdAt}
-							{quiz.questionNum}
+							<label>
+								Αρ.Ερωτήσων:
+								{quiz.questionNum}
+							</label>
 							<button onClick={() => handleEdit(quiz.id)}>edit</button>
 							<button onClick={() => handleDelete(quiz.id)}>delete</button>
 						</li>

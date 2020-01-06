@@ -4,43 +4,43 @@ import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 
-// TODO POST UPDATE NOT WORKING
 // TODO NEEN TO HANDLE THE ONCHANGE FOR EACH FIELD. INDEX MIGHT BE USEFULL
 
 // Link to the form example from codepen
 //https://codesandbox.io/s/react-dynamic-form-fields-3fjbd?from-embed
+// TODO create a new state that is temp and take all the data from the original quiz.
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 
-const test = {
-	name: 'Tralalix',
-	questions: [
-		{
-			questionTitle: 'asdasd',
-			answerA: '213652',
-			answerB: '236',
-			answerC: 'C23623',
-			answerD: 'Dwegweg',
-			correctAnswer: 1
-		},
-		{
-			questionTitle: 'Question 1',
-			answerA: 'gwegwegA',
-			answerB: 'Bwegweg',
-			answerC: 'Casgasg',
-			answerD: 'Dasgasg',
-			correctAnswer: 1
-		},
-		{
-			questionTitle: 'Qasmjutjkm 1',
-			answerA: 'asfasf',
-			answerB: 'Basfasf',
-			answerC: 'Casfasf',
-			answerD: 'Dasfasf',
-			correctAnswer: 1
-		}
-	]
-};
+// const test = {
+// 	name: 'Tralalix',
+// 	questions: [
+// 		{
+// 			questionTitle: 'asdasd',
+// 			answerA: '213652',
+// 			answerB: '236',
+// 			answerC: 'C23623',
+// 			answerD: 'Dwegweg',
+// 			correctAnswer: 1
+// 		},
+// 		{
+// 			questionTitle: 'Question 1',
+// 			answerA: 'gwegwegA',
+// 			answerB: 'Bwegweg',
+// 			answerC: 'Casgasg',
+// 			answerD: 'Dasgasg',
+// 			correctAnswer: 1
+// 		},
+// 		{
+// 			questionTitle: 'Qasmjutjkm 1',
+// 			answerA: 'asfasf',
+// 			answerB: 'Basfasf',
+// 			answerC: 'Casfasf',
+// 			answerD: 'Dasfasf',
+// 			correctAnswer: 1
+// 		}
+// 	]
+// };
 
 const override = css`
 	display: block;
@@ -58,7 +58,7 @@ const EditQuiz = ({ match }) => {
 	//========Funtions==========
 	const handleAddQuestion = () => {
 		const values = quiz.questions;
-		values.push({ answerA: 'asdasd', answerB: '123123' });
+		values.push({});
 		setQuiz(previousValues => ({
 			...previousValues,
 			questions: values
@@ -73,6 +73,35 @@ const EditQuiz = ({ match }) => {
 			...previousValues,
 			questions: values
 		}));
+	};
+
+	const handleTitleChange = e => {
+		setQuiz(previousData => ({ ...previousData, name: e.target.value }));
+	};
+
+	const handleInputChange = (index, event) => {
+		const values = [...quiz.questions];
+		switch (event.target.name) {
+			case 'questionTitle':
+				values[index].questionTitle = event.target.value;
+				break;
+			case 'answerA':
+				values[index].answerA = event.target.value;
+				break;
+			case 'answerB':
+				values[index].answerB = event.target.value;
+				break;
+			case 'answerC':
+				values[index].answerC = event.target.value;
+				break;
+			case 'answerD':
+				values[index].answerD = event.target.value;
+				break;
+			default:
+				break;
+		}
+
+		setQuiz(previousdata => ({ ...previousdata, values }));
 	};
 
 	const handleSubmit = useCallback(event => {
@@ -124,34 +153,60 @@ const EditQuiz = ({ match }) => {
 					<form onSubmit={handleSubmit}>
 						<label>
 							Quiz name:
-							<input name="name" type="name" value={quiz.name} />
+							<input
+								name="name"
+								type="name"
+								value={quiz.name}
+								onChange={handleTitleChange}
+							/>
 						</label>
 						{quiz.questions.map((question, index) => (
 							<div key={index} className="question-row">
 								<label>
 									Question:
 									<input
-										name="name"
-										type="name"
+										name="questionTitle"
+										type="questionTitle"
 										value={question.questionTitle}
+										onChange={event => handleInputChange(index, event)}
 									/>
 								</label>
 
 								<label>
 									Answer A:
-									<input name="name" type="name" value={question.answerA} />
+									<input
+										name="name"
+										type="answerA"
+										value={question.answerA}
+										onChange={event => handleInputChange(index, event)}
+									/>
 								</label>
 								<label>
 									Answer B:
-									<input name="name" type="name" value={question.answerB} />
+									<input
+										name="answerB"
+										type="answerB"
+										value={question.answerB}
+										onChange={event => handleInputChange(index, event)}
+									/>
 								</label>
 								<label>
 									Answer C:
-									<input name="name" type="name" value={question.answerC} />
+									<input
+										name="name"
+										type="name"
+										value={question.answerC}
+										onChange={event => handleInputChange(index, event)}
+									/>
 								</label>
 								<label>
 									Answer D:
-									<input name="name" type="name" value={question.answerD} />
+									<input
+										name="name"
+										type="name"
+										value={question.answerD}
+										onChange={event => handleInputChange(index, event)}
+									/>
 								</label>
 								<button onClick={() => handleRemoveFields(index)}>
 									Remove Question
@@ -163,7 +218,7 @@ const EditQuiz = ({ match }) => {
 					</form>
 				)}
 			</ul>
-			<button onClick={() => handleAddQuestion()}>test</button>
+			<button onClick={() => handleAddQuestion()}>Add new question </button>
 		</div>
 	);
 };
