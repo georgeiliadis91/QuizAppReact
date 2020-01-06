@@ -12,36 +12,6 @@ import { css } from '@emotion/core';
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 
-const test = {
-	name: 'Tralalix',
-	questions: [
-		{
-			questionTitle: 'asdasd',
-			answerA: '213652',
-			answerB: '236',
-			answerC: 'C23623',
-			answerD: 'Dwegweg',
-			correctAnswer: 1
-		},
-		{
-			questionTitle: 'Question 1',
-			answerA: 'gwegwegA',
-			answerB: 'Bwegweg',
-			answerC: 'Casgasg',
-			answerD: 'Dasgasg',
-			correctAnswer: 1
-		},
-		{
-			questionTitle: 'Qasmjutjkm 1',
-			answerA: 'asfasf',
-			answerB: 'Basfasf',
-			answerC: 'Casfasf',
-			answerD: 'Dasfasf',
-			correctAnswer: 1
-		}
-	]
-};
-
 const override = css`
 	display: block;
 	margin: 0 auto;
@@ -83,6 +53,14 @@ const EditQuiz = ({ match }) => {
 		setQuiz({ ...quiz, name: event.target.value });
 	};
 
+	const setCorrectAnswer = (index, event) => {
+		const values = [...quiz.questions];
+		values[index].correctAnswer = event.target.value;
+
+		console.log(values);
+		setQuiz({ ...quiz, questions: values });
+	};
+
 	const handleInputChange = (index, event) => {
 		const values = [...quiz.questions];
 		switch (event.target.name) {
@@ -102,11 +80,11 @@ const EditQuiz = ({ match }) => {
 				values[index].answerD = event.target.value;
 				break;
 			default:
-				console.log('default triggered');
+				console.log('Error please contact the site admin');
 				break;
 		}
 
-		setQuiz({ ...quiz, values });
+		setQuiz({ ...quiz, questions: values });
 	};
 
 	//==================================Submit======================================
@@ -225,6 +203,80 @@ const EditQuiz = ({ match }) => {
 											onChange={event => handleInputChange(index, event)}
 										/>
 									</label>
+
+									<div onChange={event => setCorrectAnswer(index, event)}>
+										<input
+											type="radio"
+											value={1}
+											name="correctAnswer"
+											checked={question.correctAnswer === 1}
+										/>{' '}
+										1
+										<input
+											type="radio"
+											value={2}
+											name="correctAnswer"
+											checked={question.correctAnswer === 2}
+										/>{' '}
+										2
+										<input
+											type="radio"
+											value={3}
+											name="correctAnswer"
+											checked={question.correctAnswer === 3}
+										/>{' '}
+										3
+										<input
+											type="radio"
+											value={4}
+											name="correctAnswer"
+											checked={question.correctAnswer === 4}
+										/>{' '}
+										4
+									</div>
+
+									{/* <div className="radio">
+										<label>
+											<input
+												type="radio"
+												name="correctAnswer"
+												value={1}
+												checked={question.correctAnswer === 1}
+												onChange={event => handleInputChange(index, event)}
+											/>
+											Option 1
+										</label>
+										<label>
+											<input
+												type="radio"
+												name="correctAnswer"
+												value={2}
+												checked={question.correctAnswer === 2}
+												onChange={event => handleInputChange(index, event)}
+											/>
+											Option 2
+										</label>
+										<label>
+											<input
+												type="radio"
+												name="correctAnswer"
+												value={3}
+												checked={question.correctAnswer === 2}
+												onChange={event => handleInputChange(index, event)}
+											/>
+											Option 3
+										</label>
+										<label>
+											<input
+												type="radio"
+												name="correctAnswer"
+												value={4}
+												checked={question.correctAnswer === 4}
+												onChange={event => handleInputChange(index, event)}
+											/>
+											Option 4
+										</label>
+									</div> */}
 									<button onClick={() => handleRemoveFields(index)}>
 										Remove Question
 									</button>
