@@ -12,35 +12,35 @@ import { css } from '@emotion/core';
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 
-// const test = {
-// 	name: 'Tralalix',
-// 	questions: [
-// 		{
-// 			questionTitle: 'asdasd',
-// 			answerA: '213652',
-// 			answerB: '236',
-// 			answerC: 'C23623',
-// 			answerD: 'Dwegweg',
-// 			correctAnswer: 1
-// 		},
-// 		{
-// 			questionTitle: 'Question 1',
-// 			answerA: 'gwegwegA',
-// 			answerB: 'Bwegweg',
-// 			answerC: 'Casgasg',
-// 			answerD: 'Dasgasg',
-// 			correctAnswer: 1
-// 		},
-// 		{
-// 			questionTitle: 'Qasmjutjkm 1',
-// 			answerA: 'asfasf',
-// 			answerB: 'Basfasf',
-// 			answerC: 'Casfasf',
-// 			answerD: 'Dasfasf',
-// 			correctAnswer: 1
-// 		}
-// 	]
-// };
+const test = {
+	name: 'Tralalix',
+	questions: [
+		{
+			questionTitle: 'asdasd',
+			answerA: '213652',
+			answerB: '236',
+			answerC: 'C23623',
+			answerD: 'Dwegweg',
+			correctAnswer: 1
+		},
+		{
+			questionTitle: 'Question 1',
+			answerA: 'gwegwegA',
+			answerB: 'Bwegweg',
+			answerC: 'Casgasg',
+			answerD: 'Dasgasg',
+			correctAnswer: 1
+		},
+		{
+			questionTitle: 'Qasmjutjkm 1',
+			answerA: 'asfasf',
+			answerB: 'Basfasf',
+			answerC: 'Casfasf',
+			answerD: 'Dasfasf',
+			correctAnswer: 1
+		}
+	]
+};
 
 const override = css`
 	display: block;
@@ -53,9 +53,11 @@ const EditQuiz = ({ match }) => {
 	const [loading, setLoading] = useState(true);
 	const [quiz, setQuiz] = useState(['']);
 
+	let { name } = quiz;
+
 	const alert = useAlert();
 
-	//========Funtions==========
+	//==================================field add/remove======================================
 	const handleAddQuestion = () => {
 		const values = quiz.questions;
 		values.push({});
@@ -69,14 +71,16 @@ const EditQuiz = ({ match }) => {
 		const values = quiz.questions;
 		values.splice(index, 1);
 
-		setQuiz(previousValues => ({
-			...previousValues,
+		setQuiz({
+			...quiz,
 			questions: values
-		}));
+		});
 	};
 
-	const handleTitleChange = event => {
-		setQuiz(previousData => ({ ...previousData, name: event.target.value }));
+	//==================================field data manipulation======================================
+
+	const handmeNameChange = event => {
+		setQuiz({ ...quiz, name: event.target.value });
 	};
 
 	const handleInputChange = (index, event) => {
@@ -102,23 +106,30 @@ const EditQuiz = ({ match }) => {
 				break;
 		}
 
-		setQuiz(previousdata => ({ ...previousdata, values }));
+		setQuiz({ ...quiz, values });
 	};
 
-	const handleSubmit = useCallback(event => {
-		event.preventDefault();
+	//==================================Submit======================================
 
-		axios
-			.patch('http://geoili.me:4000/quizes/5e0faca40b01ec775e1d54bf', test)
-			.then(res => {
-				setLoading(true);
-				console.log(res.data);
-			})
-			.catch(err => {
-				alert.error(err.message);
-			});
-	}, []);
+	const handleSubmit = useCallback(
+		event => {
+			event.preventDefault();
+			console.log(quiz);
 
+			axios
+				.patch('http://geoili.me:4000/quizes/' + id, quiz)
+				.then(res => {
+					setLoading(true);
+					console.log(res.data);
+				})
+				.catch(err => {
+					alert.error(err.message);
+				});
+		},
+		[quiz]
+	);
+
+	//==================================useEffect======================================
 	useEffect(() => {
 		axios
 			.get('http://geoili.me:4000/quizes/' + id)
@@ -138,6 +149,8 @@ const EditQuiz = ({ match }) => {
 			});
 	}, [loading]);
 
+	//==================render===========================
+
 	return (
 		<div>
 			<h3>ID: {id}</h3>
@@ -156,8 +169,8 @@ const EditQuiz = ({ match }) => {
 							<input
 								name="name"
 								type="text"
-								value={quiz.name}
-								onChange={event => handleTitleChange(event)}
+								value={name}
+								onChange={event => handmeNameChange(event)}
 							/>
 						</label>
 						{quiz.questions.map((question, index) => (
