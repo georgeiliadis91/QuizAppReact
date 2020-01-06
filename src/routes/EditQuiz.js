@@ -75,8 +75,8 @@ const EditQuiz = ({ match }) => {
 		}));
 	};
 
-	const handleTitleChange = e => {
-		setQuiz(previousData => ({ ...previousData, name: e.target.value }));
+	const handleTitleChange = event => {
+		setQuiz(previousData => ({ ...previousData, name: event.target.value }));
 	};
 
 	const handleInputChange = (index, event) => {
@@ -98,6 +98,7 @@ const EditQuiz = ({ match }) => {
 				values[index].answerD = event.target.value;
 				break;
 			default:
+				console.log('default triggered');
 				break;
 		}
 
@@ -129,7 +130,6 @@ const EditQuiz = ({ match }) => {
 					name: quiz.name,
 					questions: quiz.questions
 				});
-				console.log(quiz);
 
 				setLoading(false);
 			})
@@ -155,9 +155,9 @@ const EditQuiz = ({ match }) => {
 							Quiz name:
 							<input
 								name="name"
-								type="name"
+								type="text"
 								value={quiz.name}
-								onChange={handleTitleChange}
+								onChange={event => handleTitleChange(event)}
 							/>
 						</label>
 						{quiz.questions.map((question, index) => (
@@ -166,7 +166,7 @@ const EditQuiz = ({ match }) => {
 									Question:
 									<input
 										name="questionTitle"
-										type="questionTitle"
+										type="text"
 										value={question.questionTitle}
 										onChange={event => handleInputChange(index, event)}
 									/>
@@ -175,8 +175,8 @@ const EditQuiz = ({ match }) => {
 								<label>
 									Answer A:
 									<input
-										name="name"
-										type="answerA"
+										name="answerA"
+										type="text"
 										value={question.answerA}
 										onChange={event => handleInputChange(index, event)}
 									/>
@@ -185,7 +185,7 @@ const EditQuiz = ({ match }) => {
 									Answer B:
 									<input
 										name="answerB"
-										type="answerB"
+										type="text"
 										value={question.answerB}
 										onChange={event => handleInputChange(index, event)}
 									/>
@@ -193,8 +193,8 @@ const EditQuiz = ({ match }) => {
 								<label>
 									Answer C:
 									<input
-										name="name"
-										type="name"
+										name="answerC"
+										type="text"
 										value={question.answerC}
 										onChange={event => handleInputChange(index, event)}
 									/>
@@ -202,8 +202,8 @@ const EditQuiz = ({ match }) => {
 								<label>
 									Answer D:
 									<input
-										name="name"
-										type="name"
+										name="answerD"
+										type="text"
 										value={question.answerD}
 										onChange={event => handleInputChange(index, event)}
 									/>
