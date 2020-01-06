@@ -163,75 +163,79 @@ const EditQuiz = ({ match }) => {
 						loading={loading}
 					/>
 				) : (
-					<form onSubmit={handleSubmit}>
-						<label>
-							Quiz name:
-							<input
-								name="name"
-								type="text"
-								value={name}
-								onChange={event => handmeNameChange(event)}
-							/>
-						</label>
-						{quiz.questions.map((question, index) => (
-							<div key={index} className="question-row">
-								<label>
-									Question:
-									<input
-										name="questionTitle"
-										type="text"
-										value={question.questionTitle}
-										onChange={event => handleInputChange(index, event)}
-									/>
-								</label>
+					<div id="admin-quiz-creation-form">
+						<button onClick={() => handleAddQuestion()}>
+							Add new question{' '}
+						</button>
+						<form onSubmit={handleSubmit}>
+							<label>
+								Quiz name:
+								<input
+									name="name"
+									type="text"
+									value={name}
+									onChange={event => handmeNameChange(event)}
+								/>
+							</label>
+							{quiz.questions.map((question, index) => (
+								<div key={index} className="question-row">
+									<label>
+										Question:
+										<input
+											name="questionTitle"
+											type="text"
+											value={question.questionTitle}
+											onChange={event => handleInputChange(index, event)}
+										/>
+									</label>
 
-								<label>
-									Answer A:
-									<input
-										name="answerA"
-										type="text"
-										value={question.answerA}
-										onChange={event => handleInputChange(index, event)}
-									/>
-								</label>
-								<label>
-									Answer B:
-									<input
-										name="answerB"
-										type="text"
-										value={question.answerB}
-										onChange={event => handleInputChange(index, event)}
-									/>
-								</label>
-								<label>
-									Answer C:
-									<input
-										name="answerC"
-										type="text"
-										value={question.answerC}
-										onChange={event => handleInputChange(index, event)}
-									/>
-								</label>
-								<label>
-									Answer D:
-									<input
-										name="answerD"
-										type="text"
-										value={question.answerD}
-										onChange={event => handleInputChange(index, event)}
-									/>
-								</label>
-								<button onClick={() => handleRemoveFields(index)}>
-									Remove Question
-								</button>
-							</div>
-						))}
+									<label>
+										Answer A:
+										<input
+											name="answerA"
+											type="text"
+											value={question.answerA}
+											onChange={event => handleInputChange(index, event)}
+										/>
+									</label>
+									<label>
+										Answer B:
+										<input
+											name="answerB"
+											type="text"
+											value={question.answerB}
+											onChange={event => handleInputChange(index, event)}
+										/>
+									</label>
+									<label>
+										Answer C:
+										<input
+											name="answerC"
+											type="text"
+											value={question.answerC}
+											onChange={event => handleInputChange(index, event)}
+										/>
+									</label>
+									<label>
+										Answer D:
+										<input
+											name="answerD"
+											type="text"
+											value={question.answerD}
+											onChange={event => handleInputChange(index, event)}
+										/>
+									</label>
+									<button onClick={() => handleRemoveFields(index)}>
+										Remove Question
+									</button>
+								</div>
+							))}
 
-						<button type="submit">Submit Changes</button>
-					</form>
+							<button type="submit">Submit Changes</button>
+						</form>
+					</div>
 				)}
 			</ul>
-			<button onClick={() => handleAddQuestion()}>Add new question </button>
 		</div>
 	);
 };
