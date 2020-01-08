@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
+// import FormRadioBtn from '../components/FormRadioBtn';
 
 // TODO NEEN TO HANDLE THE ONCHANGE FOR EACH FIELD. INDEX MIGHT BE USEFULL
 
@@ -55,9 +56,8 @@ const EditQuiz = ({ match }) => {
 
 	const setCorrectAnswer = (index, event) => {
 		const values = [...quiz.questions];
-		values[index].correctAnswer = event.target.value;
+		values[index].correctAnswer = parseInt(event.target.value);
 
-		console.log(values);
 		setQuiz({ ...quiz, questions: values });
 	};
 
@@ -204,34 +204,43 @@ const EditQuiz = ({ match }) => {
 										/>
 									</label>
 
-									<div onChange={event => setCorrectAnswer(index, event)}>
+									{/* <FormRadioBtn
+										index={index}
+										correctAnswer={question.correctAnswer}
+										setCorrectAnswer={setCorrectAnswer}
+									/> */}
+
+									<div
+										id={'radio-group' + index}
+										onChange={event => setCorrectAnswer(index, event)}
+									>
 										<input
 											type="radio"
 											value={1}
-											name="correctAnswer"
+											name={'radio-group' + index}
 											checked={question.correctAnswer === 1}
-										/>{' '}
+										/>
 										1
 										<input
 											type="radio"
 											value={2}
-											name="correctAnswer"
+											name={'radio-group' + index}
 											checked={question.correctAnswer === 2}
-										/>{' '}
+										/>
 										2
 										<input
 											type="radio"
 											value={3}
-											name="correctAnswer"
+											name={'radio-group' + index}
 											checked={question.correctAnswer === 3}
-										/>{' '}
+										/>
 										3
 										<input
 											type="radio"
 											value={4}
-											name="correctAnswer"
+											name={'radio-group' + index}
 											checked={question.correctAnswer === 4}
-										/>{' '}
+										/>
 										4
 									</div>
 
