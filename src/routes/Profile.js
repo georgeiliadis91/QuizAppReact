@@ -5,7 +5,9 @@ import { GoVerified, GoUnverified } from 'react-icons/go';
 
 const Profile = () => {
 	const { currentUser } = useContext(AuthContext);
-	console.log(currentUser);
+
+	const { lastSignInTime, creationTime } = currentUser.metadata;
+
 	return (
 		<div>
 			<h2>User Profile</h2>
@@ -22,8 +24,8 @@ const Profile = () => {
 					</div>
 				)}
 			</div>
-			{/* <div>{currentUser.metadata.lastSignInTime}</div>
-			<div>{currentUser.metadata.creationTime}</div> */}
+			<div>{lastSignInTime}</div>
+			<div>{creationTime}</div>
 		</div>
 	);
 };
