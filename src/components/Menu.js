@@ -17,6 +17,9 @@ const Menu = () => {
 						<Link to="/dashboard">Dashboard</Link>
 					</li>
 					<li>
+						<Link to="/randkings">Rankings</Link>
+					</li>
+					<li>
 						<button onClick={() => app.auth().signOut()}>Sign out</button>
 					</li>
 				</ul>

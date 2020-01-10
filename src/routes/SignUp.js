@@ -13,7 +13,7 @@ const SignUp = ({ history }) => {
 			event.preventDefault();
 			const { email, password, password2 } = event.target.elements;
 
-			if (password === password2) {
+			if (password.value === password2.value) {
 				try {
 					await app
 						.auth()
@@ -51,7 +51,7 @@ const SignUp = ({ history }) => {
 					Password
 					<input
 						name="password2"
-						type="password2"
+						type="password"
 						placeholder="Verify Password"
 					/>
 				</label>

@@ -51,7 +51,7 @@ const Home = () => {
 				/>
 			) : (
 				quizes.map(quiz => (
-					<div>
+					<div key={quiz.id}>
 						<Link to={'quiz/' + quiz.id}>{quiz.name}</Link>
 					</div>
 				))
