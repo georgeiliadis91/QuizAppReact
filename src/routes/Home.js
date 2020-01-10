@@ -41,21 +41,25 @@ const Home = () => {
 
 	return (
 		<div>
-			<h3>Home</h3>
-			{loading ? (
-				<ClipLoader
-					css={override}
-					size={150}
-					color={'coral'}
-					loading={loading}
-				/>
-			) : (
-				quizes.map(quiz => (
-					<div key={quiz.id}>
-						<Link to={'quiz/' + quiz.id}>{quiz.name}</Link>
-					</div>
-				))
-			)}
+			<h2>Home</h2>
+
+			<div>
+				<h3>List of quizes to take</h3>
+				{loading ? (
+					<ClipLoader
+						css={override}
+						size={150}
+						color={'coral'}
+						loading={loading}
+					/>
+				) : (
+					quizes.map(quiz => (
+						<div key={quiz.id}>
+							<Link to={'quiz/' + quiz.id}>{quiz.name}</Link>
+						</div>
+					))
+				)}
+			</div>
 		</div>
 	);
 };

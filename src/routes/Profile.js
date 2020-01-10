@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/Auth';
-import app from '../firebase/firebase';
-import { GoVerified, GoUnverified } from 'react-icons/go';
+import { GoUnverified } from 'react-icons/go';
+import { MdVerifiedUser } from 'react-icons/md';
 
 const Profile = () => {
 	const { currentUser } = useContext(AuthContext);
-
-	const { lastSignInTime, creationTime } = currentUser.metadata;
 
 	return (
 		<div>
@@ -15,7 +13,7 @@ const Profile = () => {
 			<div>
 				{currentUser.emailVerified ? (
 					<div>
-						Verified <GoVerified size="2rem" />
+						Verified <MdVerifiedUser size="2rem" />
 					</div>
 				) : (
 					<div>
@@ -24,8 +22,6 @@ const Profile = () => {
 					</div>
 				)}
 			</div>
-			<div>{lastSignInTime}</div>
-			<div>{creationTime}</div>
 		</div>
 	);
 };
