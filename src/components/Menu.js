@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/Auth';
-import { Link } from 'react-router-dom';
 import app from '../firebase/firebase';
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
 	const { currentUser } = useContext(AuthContext);
@@ -17,7 +17,10 @@ const Menu = () => {
 						<Link to="/dashboard">Dashboard</Link>
 					</li>
 					<li>
-						<Link to="/randkings">Rankings</Link>
+						<Link to="/rankings">Rankings</Link>
+					</li>
+					<li>
+						<Link to="/profile">Profile</Link>
 					</li>
 					<li>
 						<button onClick={() => app.auth().signOut()}>Sign out</button>
@@ -25,7 +28,6 @@ const Menu = () => {
 				</ul>
 			) : (
 				<div>
-					something
 					<li>
 						<Link to="/login">Login</Link>
 					</li>
