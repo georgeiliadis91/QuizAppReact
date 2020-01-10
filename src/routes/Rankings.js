@@ -36,8 +36,6 @@ const Rankings = () => {
 			});
 	}, [loading]);
 
-	console.log(users);
-
 	return (
 		<div>
 			<h2>Rankings should go here</h2>

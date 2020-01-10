@@ -7,34 +7,34 @@ const Menu = () => {
 	const { currentUser } = useContext(AuthContext);
 
 	return (
-		<div>
+		<div className="main-menu">
 			{currentUser ? (
 				<ul>
 					<li>
-						<Link to="/">Home</Link>
+						<Link to="/">Αρχική</Link>
 					</li>
 					<li>
-						<Link to="/dashboard">Dashboard</Link>
+						<Link to="/rankings">Κατάταξη</Link>
 					</li>
 					<li>
-						<Link to="/rankings">Rankings</Link>
+						<Link to="/profile">Προφίλ</Link>
 					</li>
 					<li>
-						<Link to="/profile">Profile</Link>
+						<Link to="/dashboard">Διαχείριση</Link>
 					</li>
 					<li>
-						<button onClick={() => app.auth().signOut()}>Sign out</button>
+						<button onClick={() => app.auth().signOut()}>Αποσύνδεση</button>
 					</li>
 				</ul>
 			) : (
-				<div>
+				<ul>
 					<li>
-						<Link to="/login">Login</Link>
+						<Link to="/login">Είσοδος</Link>
 					</li>
 					<li>
-						<Link to="/signup">Signup</Link>
+						<Link to="/signup">Εγγραφή</Link>
 					</li>
-				</div>
+				</ul>
 			)}
 		</div>
 	);

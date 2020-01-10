@@ -9,10 +9,70 @@
 	text-align: center;
 }
 
+li {
+	list-style-type: none;
+}
+
 body {
+	background: #fefefe;
 	font-family: 'FiraSans';
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+button {
+	display: inline-block;
+	border: none;
+	font-size: 1.2rem;
+	padding: 0.25rem 1rem;
+	margin: 0;
+	text-decoration: none;
+	background: #333;
+	color: #fefefe;
+	cursor: pointer;
+	text-align: center;
+	transition: background 250ms ease-in-out, transform 150ms ease;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+	background: #0053ba;
+}
+
+button:focus {
+	outline: 1px solid #fff;
+	outline-offset: -4px;
+}
+
+button:active {
+	transform: scale(0.99);
+}
+
+.main-navbar {
+	background: rgb(0, 153, 255);
+	color: #fefefe;
+
+	#welcome-title {
+		padding-top: 1rem;
+	}
+	.main-menu {
+		font-size: 1.2rem;
+		ul {
+			display: flex;
+			justify-content: flex-end;
+			padding-right: 2rem;
+			li {
+				display: block;
+				padding: 0.25rem 0.5rem;
+				a {
+					text-decoration: none;
+					color: #fefefe;
+				}
+			}
+		}
+	}
 }
 
 //admin dashboard
@@ -23,6 +83,10 @@ body {
 		// temporary
 		label {
 			margin: 0.25rem 0.5rem;
+		}
+		button {
+			background: #0053ba;
+			margin: 0 0.2rem;
 		}
 	}
 }

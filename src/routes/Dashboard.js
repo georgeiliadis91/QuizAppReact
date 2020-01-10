@@ -74,14 +74,14 @@ const Dashboard = ({ history }) => {
 
 	return (
 		<div id="admin-dashboard">
-			<h2>Dashboard</h2>
-			<h3>Create new Quiz</h3>
+			<h2>Πάνελ Διαχείρησης</h2>
+			<h3>Δημιουργία νέου Quiz</h3>
 			<form onSubmit={handleSubmit}>
 				<label>
-					Quiz name:
-					<input name="name" type="name" placeholder="Enter name..." />
+					Όνομα
+					<input name="name" type="name" placeholder="Εισάγετε όνομα..." />
 				</label>
-				<button type="submit">Create</button>
+				<button type="submit">Δημιουργία</button>
 			</form>
 			<ul>
 				{loading ? (
@@ -105,8 +105,8 @@ const Dashboard = ({ history }) => {
 								Αρ.Ερωτήσων:
 								{quiz.questionNum}
 							</label>
-							<button onClick={() => handleEdit(quiz.id)}>edit</button>
-							<button onClick={() => handleDelete(quiz.id)}>delete</button>
+							<button onClick={() => handleEdit(quiz.id)}>Επεξεργασία</button>
+							<button onClick={() => handleDelete(quiz.id)}>Διαγραφή</button>
 						</li>
 					))
 				)}

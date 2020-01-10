@@ -25,23 +25,23 @@ function App() {
 		<Provider template={AlertTemplate} {...options}>
 			<AuthProvider>
 				<Router>
-					<div className="App">
+					<div className="main-navbar">
 						<div>
-							<h2>Καλώς ήρθατε!</h2>
+							<h2 id="welcome-title">Καλώς ήρθατε!</h2>
 						</div>
 						<Menu />
-						<Switch>
-							<PrivateRoute exact path="/" component={Home} />
-							<PrivateRoute exact path="/profile" component={Profile} />
-							<PrivateRoute exact path="/dashboard/" component={Dashboard} />
-							<PrivateRoute exact path="/editquiz/:id" component={EditQuiz} />
-							<Route exact path="/quiz/:id" component={Quiz} />
-							<Route exact path="/rankings" component={Rankings} />
-							<Route exact path="/login" component={Login} />
-							<Route exact path="/signup" component={SignUp} />
-							<Route exact path="*" component={NotFound} />
-						</Switch>
 					</div>
+					<Switch>
+						<PrivateRoute exact path="/" component={Home} />
+						<PrivateRoute exact path="/profile" component={Profile} />
+						<PrivateRoute exact path="/dashboard/" component={Dashboard} />
+						<PrivateRoute exact path="/editquiz/:id" component={EditQuiz} />
+						<Route exact path="/quiz/:id" component={Quiz} />
+						<Route exact path="/rankings" component={Rankings} />
+						<Route exact path="/login" component={Login} />
+						<Route exact path="/signup" component={SignUp} />
+						<Route exact path="*" component={NotFound} />
+					</Switch>
 				</Router>
 			</AuthProvider>
 		</Provider>

@@ -34,7 +34,7 @@ const Login = ({ history }) => {
 
 	return (
 		<div>
-			<h1>Log in</h1>
+			<h1>Είσοδος</h1>
 			<form onSubmit={handleLogin}>
 				<label>
 					Email
@@ -44,9 +44,9 @@ const Login = ({ history }) => {
 					Password
 					<input name="password" type="password" placeholder="Password" />
 				</label>
-				<button type="submit">Log in</button>
+				<button type="submit">Είσοδος</button>
 			</form>
-			<Link to="/signup">Do not have an account</Link>
+			<Link to="/signup">Δεν έχω λογαριασμό</Link>
 		</div>
 	);
 };

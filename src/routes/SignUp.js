@@ -55,9 +55,9 @@ const SignUp = ({ history }) => {
 						placeholder="Verify Password"
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button type="submit">Εγγραφή</button>
 			</form>
-			<Link to="/login">Already have an account?</Link>
+			<Link to="/login">Έχετε ήδη λογαριασμό?</Link>
 		</div>
 	);
 };

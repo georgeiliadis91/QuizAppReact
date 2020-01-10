@@ -41,10 +41,10 @@ const Home = () => {
 
 	return (
 		<div>
-			<h2>Home</h2>
+			<h2>Αρχική</h2>
 
 			<div>
-				<h3>List of quizes to take</h3>
+				<h3>Λίστα με quiz</h3>
 				{loading ? (
 					<ClipLoader
 						css={override}
