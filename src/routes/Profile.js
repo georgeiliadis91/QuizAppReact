@@ -8,8 +8,8 @@ const Profile = () => {
 
 	return (
 		<div>
-			<h2>User Profile</h2>
-			<div>{currentUser.email}</div>
+			<h2>Προφίλ Χρήστη</h2>
+			<div>email: {currentUser.email}</div>
 			<div>
 				{currentUser.emailVerified ? (
 					<div>
@@ -21,6 +21,10 @@ const Profile = () => {
 						<GoUnverified size="2rem" />
 					</div>
 				)}
+			</div>
+
+			<div>
+				<h2>Στατιστικά και σκορ</h2>
 			</div>
 		</div>
 	);
