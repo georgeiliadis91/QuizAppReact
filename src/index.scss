@@ -76,18 +76,17 @@ button:active {
 	}
 }
 
-#user-profile {
-	h2.page-title {
-		font-size: 2rem;
-		margin-bottom: 3.5rem;
-	}
+h2.page-title {
+	font-size: 2rem;
+	margin-bottom: 3.5rem;
+}
 
+#user-profile {
 	.user-data {
 		border: dashed 1px #333;
 		border-radius: 5px;
 		padding: 2rem 0;
 		h3 {
-			font-size: 1.3rem;
 			margin-bottom: 2rem;
 		}
 		#password-change {
@@ -96,6 +95,12 @@ button:active {
 			padding-top: 2rem;
 			display: flex;
 			flex-direction: column;
+		}
+	}
+	.user-stats {
+		padding-top: 2rem;
+		h3 {
+			font-size: 1.3rem;
 		}
 	}
 }

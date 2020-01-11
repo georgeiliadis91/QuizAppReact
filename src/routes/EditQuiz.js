@@ -131,7 +131,7 @@ const EditQuiz = ({ match }) => {
 
 	return (
 		<div>
-			<h3>ID: {id}</h3>
+			<h2 className="page-title">ID: {id}</h2>
 			<ul>
 				{loading ? (
 					<ClipLoader

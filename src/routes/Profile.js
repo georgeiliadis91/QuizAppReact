@@ -81,7 +81,7 @@ const Profile = () => {
 							</form>
 						</div>
 					</Col>
-					<Col xs={12} sm={9}>
+					<Col xs={12} sm={9} className="user-stats">
 						<div>
 							<h3>Στατιστικά και σκορ</h3>
 						</div>

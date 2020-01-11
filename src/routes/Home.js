@@ -41,7 +41,7 @@ const Home = () => {
 
 	return (
 		<div>
-			<h2>Αρχική</h2>
+			<h2 className="page-title">Αρχική</h2>
 
 			<div>
 				<h3>Λίστα με quiz</h3>

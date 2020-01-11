@@ -74,17 +74,17 @@ button:active {
   color: #fefefe;
 }
 
-#user-profile h2.page-title {
+h2.page-title {
   font-size: 2rem;
   margin-bottom: 3.5rem;
 }
+
 #user-profile .user-data {
   border: dashed 1px #333;
   border-radius: 5px;
   padding: 2rem 0;
 }
 #user-profile .user-data h3 {
-  font-size: 1.3rem;
   margin-bottom: 2rem;
 }
 #user-profile .user-data #password-change {
@@ -93,6 +93,12 @@ button:active {
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
+}
+#user-profile .user-stats {
+  padding-top: 2rem;
+}
+#user-profile .user-stats h3 {
+  font-size: 1.3rem;
 }
 
 div.quiz-slider-div {

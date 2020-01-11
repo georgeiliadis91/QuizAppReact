@@ -38,7 +38,7 @@ const Rankings = () => {
 
 	return (
 		<div>
-			<h2>Rankings should go here</h2>
+			<h2 className="page-title">Rankings should go here</h2>
 
 			{loading ? (
 				<ClipLoader

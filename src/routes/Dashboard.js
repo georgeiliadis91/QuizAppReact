@@ -74,7 +74,7 @@ const Dashboard = ({ history }) => {
 
 	return (
 		<div id="admin-dashboard">
-			<h2>Πάνελ Διαχείρησης</h2>
+			<h2 className="page-title">Πάνελ Διαχείρησης</h2>
 			<h3>Δημιουργία νέου Quiz</h3>
 			<form onSubmit={handleSubmit}>
 				<label>

@@ -38,7 +38,7 @@ const Quiz = ({ match }) => {
 
 	return (
 		<div id="quiz-page">
-			<h2>Απαντήστε στο quiz</h2>
+			<h2 className="page-title">Απαντήστε στο quiz</h2>
 			The quiz {id}
 			<Container>
 				{loading ? (

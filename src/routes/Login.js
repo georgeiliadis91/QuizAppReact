@@ -34,7 +34,7 @@ const Login = ({ history }) => {
 
 	return (
 		<div>
-			<h1>Είσοδος</h1>
+			<h2 className="page-title">Είσοδος</h2>
 			<form onSubmit={handleLogin}>
 				<label>
 					Email
