@@ -75,6 +75,17 @@ button:active {
 	}
 }
 
+div.quiz-slider-div {
+	padding-top: 4rem;
+	font-size: 1.3rem;
+	.quiz-question {
+		margin-bottom: 2rem;
+	}
+	.quiz-answer {
+		margin: 1rem 0;
+	}
+}
+
 //admin dashboard
 
 #admin-dashboard {

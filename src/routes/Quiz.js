@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
+import { Container, Row, Col } from 'react-grid';
 
 const override = css`
 	display: block;
@@ -34,30 +37,54 @@ const Quiz = ({ match }) => {
 	}, [loading]);
 
 	return (
-		<div>
+		<div id="quiz-page">
 			<h2>Απαντήστε στο quiz</h2>
 			The quiz {id}
-			{loading ? (
-				<ClipLoader
-					css={override}
-					size={150}
-					color={'coral'}
-					loading={loading}
-				/>
-			) : (
-				<div>
-					{quiz.questions.map((question, index) => (
-						<div key={quiz.index}>
-							<div>Title: {question.questionTitle}</div>
-							<div>A: {question.answerA}</div>
-							<div>B: {question.answerB}</div>
-							<div>C: {question.answerC}</div>
-							<div>D: {question.answerD}</div>
-							<div>Correct Answer: {question.correctAnswer}</div>
-						</div>
-					))}
-				</div>
-			)}
+			<Container>
+				{loading ? (
+					<ClipLoader
+						css={override}
+						size={150}
+						color={'coral'}
+						loading={loading}
+					/>
+				) : (
+					<Slider>
+						{quiz.questions.map((question, index) => (
+							<div key={quiz.index} className="quiz-slider-div">
+								<Row>
+									<Col xs={12}>
+										<div className="quiz-question">
+											Question: {question.questionTitle}
+										</div>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={6}>
+										<div className="quiz-answer">A: {question.answerA}</div>
+									</Col>
+									<Col xs={6}>
+										<div className="quiz-answer">B: {question.answerB}</div>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={6}>
+										<div className="quiz-answer">C: {question.answerC}</div>
+									</Col>
+									<Col xs={6}>
+										<div className="quiz-answer">D: {question.answerD}</div>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={12}>
+										<div>Correct Answer: {question.correctAnswer}</div>
+									</Col>
+								</Row>
+							</div>
+						))}
+					</Slider>
+				)}
+			</Container>
 		</div>
 	);
 };

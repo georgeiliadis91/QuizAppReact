@@ -73,6 +73,17 @@ button:active {
   color: #fefefe;
 }
 
+div.quiz-slider-div {
+  padding-top: 4rem;
+  font-size: 1.3rem;
+}
+div.quiz-slider-div .quiz-question {
+  margin-bottom: 2rem;
+}
+div.quiz-slider-div .quiz-answer {
+  margin: 1rem 0;
+}
+
 #admin-dashboard li {
   border: solid 1px #777;
 }
