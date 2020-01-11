@@ -49,7 +49,7 @@ const Quiz = ({ match }) => {
 						loading={loading}
 					/>
 				) : (
-					<Slider>
+					<Slider infinite={false}>
 						{quiz.questions.map((question, index) => (
 							<div key={quiz.index} className="quiz-slider-div">
 								<Row>
