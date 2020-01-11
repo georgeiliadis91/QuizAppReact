@@ -53,6 +53,7 @@ button:active {
 .main-navbar {
 	background: rgb(0, 153, 255);
 	color: #fefefe;
+	margin-bottom: 3rem;
 
 	#welcome-title {
 		padding-top: 1rem;
@@ -71,6 +72,30 @@ button:active {
 					color: #fefefe;
 				}
 			}
+		}
+	}
+}
+
+#user-profile {
+	h2.page-title {
+		font-size: 2rem;
+		margin-bottom: 3.5rem;
+	}
+
+	.user-data {
+		border: dashed 1px #333;
+		border-radius: 5px;
+		padding: 2rem 0;
+		h3 {
+			font-size: 1.3rem;
+			margin-bottom: 2rem;
+		}
+		#password-change {
+			border-top: dashed 1px #333;
+			margin-top: 2rem;
+			padding-top: 2rem;
+			display: flex;
+			flex-direction: column;
 		}
 	}
 }

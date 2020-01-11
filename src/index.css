@@ -52,6 +52,7 @@ button:active {
 .main-navbar {
   background: #0099ff;
   color: #fefefe;
+  margin-bottom: 3rem;
 }
 .main-navbar #welcome-title {
   padding-top: 1rem;
@@ -71,6 +72,27 @@ button:active {
 .main-navbar .main-menu ul li a {
   text-decoration: none;
   color: #fefefe;
+}
+
+#user-profile h2.page-title {
+  font-size: 2rem;
+  margin-bottom: 3.5rem;
+}
+#user-profile .user-data {
+  border: dashed 1px #333;
+  border-radius: 5px;
+  padding: 2rem 0;
+}
+#user-profile .user-data h3 {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+#user-profile .user-data #password-change {
+  border-top: dashed 1px #333;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 div.quiz-slider-div {

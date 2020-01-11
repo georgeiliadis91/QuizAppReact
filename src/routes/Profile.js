@@ -5,6 +5,8 @@ import { MdVerifiedUser } from 'react-icons/md';
 import app from '../firebase/firebase';
 import { useAlert } from 'react-alert';
 
+import { Container, Row, Col } from 'react-grid';
+
 const Profile = () => {
 	const alert = useAlert();
 
@@ -35,45 +37,57 @@ const Profile = () => {
 	}, []);
 
 	return (
-		<div>
-			<h2>Προφίλ Χρήστη</h2>
-			<div>email: {currentUser.email}</div>
-			<div>
-				{currentUser.emailVerified ? (
-					<div>
-						Verified <MdVerifiedUser size="2rem" />
-					</div>
-				) : (
-					<div>
-						Unverified
-						<GoUnverified size="2rem" />
-					</div>
-				)}
-			</div>
+		<div id="user-profile">
+			<h2 className="page-title">Προφίλ Χρήστη</h2>
+			<Container>
+				<Row>
+					<Col xs={12} sm={3} className="user-data">
+						<h3>Στοιχεία Χρήστη</h3>
+						<div>email: {currentUser.email}</div>
+						<div>
+							{currentUser.emailVerified ? (
+								<div>
+									Verified <MdVerifiedUser size="2rem" />
+								</div>
+							) : (
+								<div>
+									Unverified
+									<GoUnverified size="2rem" />
+								</div>
+							)}
+						</div>
 
-			<div>
-				<h3>Αλλαγή κωδικού πρόσβασης</h3>
+						<div id="password-change">
+							<h3>Αλλαγή κωδικού πρόσβασης</h3>
 
-				<form onSubmit={handlePasswordReset}>
-					<label>
-						Νέος Κωδικός
-						<input name="password" type="password" placeholder="Password" />
-					</label>
-					<label>
-						Επιβεβαίωση κωδικού
-						<input
-							name="password2"
-							type="password"
-							placeholder="Verify Password"
-						/>
-					</label>
-					<button type="submit">Αλλαγή κωδικού</button>
-				</form>
-			</div>
-
-			<div>
-				<h2>Στατιστικά και σκορ</h2>
-			</div>
+							<form onSubmit={handlePasswordReset}>
+								<label>
+									Νέος Κωδικός
+									<input
+										name="password"
+										type="password"
+										placeholder="Password"
+									/>
+								</label>
+								<label>
+									Επιβεβαίωση κωδικού
+									<input
+										name="password2"
+										type="password"
+										placeholder="Verify Password"
+									/>
+								</label>
+								<button type="submit">Αλλαγή κωδικού</button>
+							</form>
+						</div>
+					</Col>
+					<Col xs={12} sm={9}>
+						<div>
+							<h3>Στατιστικά και σκορ</h3>
+						</div>
+					</Col>
+				</Row>
+			</Container>
 		</div>
 	);
 };
