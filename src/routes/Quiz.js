@@ -51,7 +51,7 @@ const Quiz = ({ match }) => {
 				) : (
 					<Slider infinite={false}>
 						{quiz.questions.map((question, index) => (
-							<div key={quiz.index} className="quiz-slider-div">
+							<div key={index} className="quiz-slider-div">
 								<Row>
 									<Col xs={12}>
 										<div className="quiz-question">
