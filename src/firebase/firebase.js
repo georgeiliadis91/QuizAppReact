@@ -10,4 +10,13 @@ const app = firebase.initializeApp({
 	messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
 });
 
+export const uiConfig = {
+	// Popup signin flow rather than redirect flow.
+	signInFlow: 'popup',
+	signInOptions: [
+		firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+		firebase.auth.FacebookAuthProvider.PROVIDER_ID
+	]
+};
+
 export default app;

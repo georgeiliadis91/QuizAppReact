@@ -2,8 +2,9 @@ import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
-import app from '../firebase/firebase';
+import app, { uiConfig } from '../firebase/firebase';
 import { AuthContext } from '../contexts/Auth';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 const Login = ({ history }) => {
 	const alert = useAlert();
@@ -46,6 +47,7 @@ const Login = ({ history }) => {
 				</label>
 				<button type="submit">Είσοδος</button>
 			</form>
+			<StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={app.auth()} />
 			<Link to="/signup">Δεν έχω λογαριασμό</Link>
 		</div>
 	);
