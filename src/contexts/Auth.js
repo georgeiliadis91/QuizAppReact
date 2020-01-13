@@ -7,7 +7,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({ children }) => {
 	const alert = useAlert();
 
-	const [currentUser, setCurrentUser] = useState([''], () => {
+	const [currentUser, setCurrentUser] = useState(null, () => {
 		const localData = localStorage.getItem('userData');
 		return localData ? JSON.parse(localData) : [];
 	});
@@ -17,10 +17,10 @@ export const AuthProvider = ({ children }) => {
 		app.auth().onAuthStateChanged(setCurrentUser);
 		localStorage.setItem('userData', JSON.stringify(currentUser));
 		//Check if user data is empty
-		// if (currentUser) {
-		// 	alert.success('logged in');
-		// }
-	});
+		if (currentUser != null) {
+			alert.success('logged in');
+		}
+	}, [currentUser]);
 
 	return (
 		<AuthContext.Provider
