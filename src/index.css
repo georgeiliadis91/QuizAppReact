@@ -124,6 +124,7 @@ div.quiz-slider-div .quiz-answer {
 }
 
 #admin-dashboard {
+  font-size: 1.2rem;
   /* Track */
   /* Handle */
   /* Handle on hover */
@@ -172,6 +173,25 @@ div.quiz-slider-div .quiz-answer {
 }
 #admin-dashboard ul li:hover {
   box-shadow: 0 0 6px #23adff;
+}
+
+#home-page li {
+  border: solid 1px #555;
+  margin: 1rem 0;
+  padding: 1rem 0.5rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 150ms ease-in-out;
+}
+#home-page li a {
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
 }
 
 /*# sourceMappingURL=index.css.map */

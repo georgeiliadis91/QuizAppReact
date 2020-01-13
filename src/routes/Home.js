@@ -4,6 +4,8 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 import { Link } from 'react-router-dom';
 
+import { Container } from 'react-grid';
+
 const override = css`
 	display: block;
 	margin: 0 auto;
@@ -40,26 +42,28 @@ const Home = () => {
 	}, [loading]);
 
 	return (
-		<div>
+		<div id="home-page">
 			<h2 className="page-title">Αρχική</h2>
 
-			<div>
-				<h3>Λίστα με quiz</h3>
-				{loading ? (
-					<ClipLoader
-						css={override}
-						size={150}
-						color={'coral'}
-						loading={loading}
-					/>
-				) : (
-					quizes.map(quiz => (
-						<div key={quiz.id}>
-							<Link to={'quiz/' + quiz.id}>{quiz.name}</Link>
-						</div>
-					))
-				)}
-			</div>
+			<h3>Λίστα με quiz</h3>
+			<Container>
+				<ul>
+					{loading ? (
+						<ClipLoader
+							css={override}
+							size={150}
+							color={'coral'}
+							loading={loading}
+						/>
+					) : (
+						quizes.map(quiz => (
+							<li key={quiz.id}>
+								<Link to={'quiz/' + quiz.id}>{quiz.name}</Link>
+							</li>
+						))
+					)}
+				</ul>
+			</Container>
 		</div>
 	);
 };
