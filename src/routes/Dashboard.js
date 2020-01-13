@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
-
 import { Container } from 'react-grid';
+
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
 	display: block;
@@ -76,15 +76,17 @@ const Dashboard = ({ history }) => {
 	return (
 		<div id="admin-dashboard">
 			<h2 className="page-title">Πάνελ Διαχείρησης</h2>
-			<h3>Δημιουργία νέου Quiz</h3>
 			<Container>
-				<form onSubmit={handleSubmit}>
-					<label>
-						Όνομα
-						<input name="name" type="name" placeholder="Εισάγετε όνομα..." />
-					</label>
-					<button type="submit">Δημιουργία</button>
-				</form>
+				<div className="create-new-quiz">
+					<h3>Δημιουργία νέου Quiz</h3>
+					<form onSubmit={handleSubmit}>
+						<label>
+							Όνομα
+							<input name="name" type="name" placeholder="Εισάγετε όνομα..." />
+						</label>
+						<button type="submit">Δημιουργία</button>
+					</form>
+				</div>
 				<ul>
 					{loading ? (
 						<ClipLoader

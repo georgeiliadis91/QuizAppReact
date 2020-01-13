@@ -129,6 +129,12 @@ div.quiz-slider-div .quiz-answer {
   /* Handle */
   /* Handle on hover */
 }
+#admin-dashboard .create-new-quiz {
+  margin-bottom: 2rem;
+  border: solid 1px #555;
+  border-radius: 5px;
+  padding: 1rem 0.5rem;
+}
 #admin-dashboard ::-webkit-scrollbar {
   width: 10px;
   border-radius: 5px;
@@ -192,6 +198,18 @@ div.quiz-slider-div .quiz-answer {
   text-decoration: none;
   color: #333;
   font-size: 1.2rem;
+}
+
+.rankings-list li {
+  border: solid 1px #555;
+  margin: 1rem 0;
+  padding: 1rem 0.5rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 150ms ease-in-out;
 }
 
 /*# sourceMappingURL=index.css.map */

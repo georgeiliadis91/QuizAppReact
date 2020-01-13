@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import app, { uiConfig } from '../firebase/firebase';
 import { AuthContext } from '../contexts/Auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { Container } from 'react-grid';
 
 const Login = ({ history }) => {
 	const alert = useAlert();
@@ -34,7 +35,7 @@ const Login = ({ history }) => {
 	}
 
 	return (
-		<div>
+		<Container>
 			<h2 className="page-title">Είσοδος</h2>
 			<form onSubmit={handleLogin}>
 				<label>
@@ -49,7 +50,7 @@ const Login = ({ history }) => {
 			</form>
 			<StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={app.auth()} />
 			<Link to="/signup">Δεν έχω λογαριασμό</Link>
-		</div>
+		</Container>
 	);
 };
 

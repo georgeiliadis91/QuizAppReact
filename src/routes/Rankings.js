@@ -3,6 +3,8 @@ import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 
+import { Container } from 'react-grid';
+
 const override = css`
 	display: block;
 	margin: 0 auto;
@@ -37,26 +39,28 @@ const Rankings = () => {
 	}, [loading]);
 
 	return (
-		<div>
-			<h2 className="page-title">Rankings should go here</h2>
+		<div className="rankings-list">
+			<Container>
+				<h2 className="page-title">Rankings should go here</h2>
 
-			{loading ? (
-				<ClipLoader
-					css={override}
-					size={150}
-					color={'coral'}
-					loading={loading}
-				/>
-			) : (
-				users.map(user => (
-					<li key={user.id}>
-						<label>
-							Όνομα:
-							{user.name}
-						</label>
-					</li>
-				))
-			)}
+				{loading ? (
+					<ClipLoader
+						css={override}
+						size={150}
+						color={'coral'}
+						loading={loading}
+					/>
+				) : (
+					users.map(user => (
+						<li key={user.id}>
+							<label>
+								Όνομα:
+								{user.name}
+							</label>
+						</li>
+					))
+				)}
+			</Container>
 		</div>
 	);
 };

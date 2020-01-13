@@ -36,8 +36,8 @@ function App() {
 						<PrivateRoute exact path="/profile" component={Profile} />
 						<PrivateRoute exact path="/dashboard/" component={Dashboard} />
 						<PrivateRoute exact path="/editquiz/:id" component={EditQuiz} />
-						<Route exact path="/quiz/:id" component={Quiz} />
-						<Route exact path="/rankings" component={Rankings} />
+						<PrivateRoute exact path="/rankings" component={Rankings} />
+						<PrivateRoute exact path="/quiz/:id" component={Quiz} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/signup" component={SignUp} />
 						<Route exact path="*" component={NotFound} />

@@ -145,6 +145,14 @@ div.quiz-slider-div {
 //admin dashboard
 #admin-dashboard {
 	font-size: 1.2rem;
+
+	.create-new-quiz {
+		margin-bottom: 2rem;
+		border: solid 1px #555;
+		border-radius: 5px;
+		padding: 1rem 0.5rem;
+	}
+
 	::-webkit-scrollbar {
 		width: 10px;
 		border-radius: 5px;
@@ -202,5 +210,11 @@ div.quiz-slider-div {
 			color: #333;
 			font-size: 1.2rem;
 		}
+	}
+}
+
+.rankings-list {
+	li {
+		@include displayList();
 	}
 }

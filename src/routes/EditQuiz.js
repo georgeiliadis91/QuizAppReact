@@ -92,7 +92,7 @@ const EditQuiz = ({ match }) => {
 	const handleSubmit = useCallback(
 		event => {
 			event.preventDefault();
-			console.log(quiz);
+			// console.log(quiz);
 
 			axios
 				.patch('http://geoili.me:4000/quizes/' + id, quiz)

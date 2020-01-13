@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import app from '../firebase/firebase';
 import { useAlert } from 'react-alert';
 import { AuthContext } from '../contexts/Auth';
+import { Container } from 'react-grid';
+import axios from 'axios';
 
 const SignUp = ({ history }) => {
 	const alert = useAlert();
@@ -18,6 +20,19 @@ const SignUp = ({ history }) => {
 					await app
 						.auth()
 						.createUserWithEmailAndPassword(email.value, password.value);
+
+					// axios
+					// 	.post('http://geoili.me:4000/users', {
+					// 		name: 'Fred',
+					// 		email: email.value
+					// 	})
+					// 	.then(response => {
+					// 		console.log(response);
+					// 	})
+					// 	.catch(error => {
+					// 		console.log(error.message);
+					// 	});
+
 					history.push('/');
 				} catch (error) {
 					alert.error(error.message);
@@ -36,7 +51,7 @@ const SignUp = ({ history }) => {
 	}
 
 	return (
-		<div>
+		<Container>
 			<h2 className="page-title">Εγγραφή χρήστη</h2>
 			<form onSubmit={handleSignUp}>
 				<label>
@@ -58,7 +73,7 @@ const SignUp = ({ history }) => {
 				<button type="submit">Εγγραφή</button>
 			</form>
 			<Link to="/login">Έχετε ήδη λογαριασμό?</Link>
-		</div>
+		</Container>
 	);
 };
 
