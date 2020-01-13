@@ -4,6 +4,7 @@ import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 
+import { Container } from 'react-grid';
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
 	display: block;
@@ -76,41 +77,43 @@ const Dashboard = ({ history }) => {
 		<div id="admin-dashboard">
 			<h2 className="page-title">Πάνελ Διαχείρησης</h2>
 			<h3>Δημιουργία νέου Quiz</h3>
-			<form onSubmit={handleSubmit}>
-				<label>
-					Όνομα
-					<input name="name" type="name" placeholder="Εισάγετε όνομα..." />
-				</label>
-				<button type="submit">Δημιουργία</button>
-			</form>
-			<ul>
-				{loading ? (
-					<ClipLoader
-						css={override}
-						size={150}
-						color={'coral'}
-						loading={loading}
-					/>
-				) : (
-					quizes.map(quiz => (
-						<li key={quiz.id}>
-							<label>
-								Όνομα:
-								{quiz.name}
-							</label>
-							<label></label>
-							Ημ. Δημιουργίας:
-							{quiz.createdAt}
-							<label>
-								Αρ.Ερωτήσων:
-								{quiz.questionNum}
-							</label>
-							<button onClick={() => handleEdit(quiz.id)}>Επεξεργασία</button>
-							<button onClick={() => handleDelete(quiz.id)}>Διαγραφή</button>
-						</li>
-					))
-				)}
-			</ul>
+			<Container>
+				<form onSubmit={handleSubmit}>
+					<label>
+						Όνομα
+						<input name="name" type="name" placeholder="Εισάγετε όνομα..." />
+					</label>
+					<button type="submit">Δημιουργία</button>
+				</form>
+				<ul>
+					{loading ? (
+						<ClipLoader
+							css={override}
+							size={150}
+							color={'coral'}
+							loading={loading}
+						/>
+					) : (
+						quizes.map(quiz => (
+							<li key={quiz.id}>
+								<label>
+									Όνομα:
+									{quiz.name}
+								</label>
+								<label></label>
+								Ημ. Δημιουργίας:
+								{quiz.createdAt}
+								<label>
+									Αρ.Ερωτήσων:
+									{quiz.questionNum}
+								</label>
+								<button onClick={() => handleEdit(quiz.id)}>Επεξεργασία</button>
+								<button onClick={() => handleDelete(quiz.id)}>Διαγραφή</button>
+							</li>
+						))
+					)}
+				</ul>
+			</Container>
 		</div>
 	);
 };

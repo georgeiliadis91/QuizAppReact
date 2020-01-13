@@ -12,6 +12,17 @@ li {
   list-style-type: none;
 }
 
+input {
+  width: 100%;
+  padding: 1rem 2rem;
+  margin: 0.75rem 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+}
+
 body {
   background: #fefefe;
   font-family: "FiraSans";
@@ -112,15 +123,55 @@ div.quiz-slider-div .quiz-answer {
   margin: 1rem 0;
 }
 
-#admin-dashboard li {
-  border: solid 1px #777;
+#admin-dashboard {
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
 }
-#admin-dashboard li label {
+#admin-dashboard ::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+}
+#admin-dashboard ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+#admin-dashboard ::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 5px;
+}
+#admin-dashboard ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+#admin-dashboard ul {
+  max-height: 40rem;
+  overflow: scroll;
+  padding-right: 1rem;
+}
+#admin-dashboard ul li {
+  border: solid 1px #555;
+  margin: 1rem 0;
+  padding: 1rem 0.5rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 150ms ease-in-out;
+}
+#admin-dashboard ul li label {
   margin: 0.25rem 0.5rem;
 }
-#admin-dashboard li button {
+#admin-dashboard ul li label:nth-child(1) {
+  flex-grow: 1;
+  text-align: left;
+}
+#admin-dashboard ul li button {
   background: #0053ba;
   margin: 0 0.2rem;
+}
+#admin-dashboard ul li:hover {
+  box-shadow: 0 0 6px #23adff;
 }
 
 /*# sourceMappingURL=index.css.map */

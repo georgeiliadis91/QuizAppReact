@@ -2,6 +2,7 @@
 	font-family: 'FiraSans';
 	src: local('FiraSans'), url(./fonts/FiraSans-Regular.ttf) format('truetype');
 }
+//========GENERAL RULES=========
 
 * {
 	margin: 0;
@@ -11,6 +12,17 @@
 
 li {
 	list-style-type: none;
+}
+
+input {
+	width: 100%;
+	padding: 1rem 2rem;
+	margin: 0.75rem 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	font-size: 1.2rem;
 }
 
 body {
@@ -119,15 +131,57 @@ div.quiz-slider-div {
 //admin dashboard
 
 #admin-dashboard {
-	li {
-		border: solid 1px #777;
-		// temporary
-		label {
-			margin: 0.25rem 0.5rem;
-		}
-		button {
-			background: #0053ba;
-			margin: 0 0.2rem;
+	::-webkit-scrollbar {
+		width: 10px;
+		border-radius: 5px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+		border-radius: 5px;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #999;
+		border-radius: 5px;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
+	ul {
+		max-height: 40rem;
+		overflow: scroll;
+		padding-right: 1rem;
+
+		li {
+			border: solid 1px #555;
+			margin: 1rem 0;
+			padding: 1rem 0.5rem;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			transition: all 150ms ease-in-out;
+			label {
+				margin: 0.25rem 0.5rem;
+				&:nth-child(1) {
+					flex-grow: 1;
+					text-align: left;
+				}
+			}
+			button {
+				background: #0053ba;
+				margin: 0 0.2rem;
+			}
+
+			&:hover {
+				box-shadow: 0 0 6px rgba(35, 173, 255, 1);
+			}
 		}
 	}
 }
