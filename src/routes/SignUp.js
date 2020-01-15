@@ -23,9 +23,13 @@ const SignUp = ({ history }) => {
 						.createUserWithEmailAndPassword(email.value, password.value)
 						.then(user => {
 							//Getting user data as a response and then pushing the user data that is userfull on our backend
+							let username;
+							if (user.user.displayName === null) {
+								username = email.value;
+							}
 							axios
 								.post('http://geoili.me:4000/users', {
-									name: 'Fred',
+									name: username,
 									email: email.value,
 									firebase_id: user.user.uid
 								})
