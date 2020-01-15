@@ -9,6 +9,7 @@ import axios from 'axios';
 
 const SignUp = ({ history }) => {
 	const alert = useAlert();
+	const { currentUser } = useContext(AuthContext);
 
 	const handleSignUp = useCallback(
 		async event => {
@@ -19,19 +20,22 @@ const SignUp = ({ history }) => {
 				try {
 					await app
 						.auth()
-						.createUserWithEmailAndPassword(email.value, password.value);
-
-					// axios
-					// 	.post('http://geoili.me:4000/users', {
-					// 		name: 'Fred',
-					// 		email: email.value
-					// 	})
-					// 	.then(response => {
-					// 		console.log(response);
-					// 	})
-					// 	.catch(error => {
-					// 		console.log(error.message);
-					// 	});
+						.createUserWithEmailAndPassword(email.value, password.value)
+						.then(user => {
+							//Getting user data as a response and then pushing the user data that is userfull on our backend
+							axios
+								.post('http://geoili.me:4000/users', {
+									name: 'Fred',
+									email: email.value,
+									firebase_id: user.user.uid
+								})
+								.then(response => {
+									console.log(response);
+								})
+								.catch(error => {
+									console.log(error.message);
+								});
+						});
 
 					history.push('/');
 				} catch (error) {
@@ -43,8 +47,6 @@ const SignUp = ({ history }) => {
 		},
 		[history]
 	);
-
-	const { currentUser } = useContext(AuthContext);
 
 	if (currentUser) {
 		return <Redirect to="/" />;
