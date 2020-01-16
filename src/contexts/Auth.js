@@ -7,7 +7,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({ children }) => {
 	const alert = useAlert();
 
-	const [currentUser, setCurrentUser] = useState(null, () => {
+	const [currentUser, setCurrentUser] = useState([''], () => {
 		const localData = localStorage.getItem('userData');
 		return localData ? JSON.parse(localData) : [];
 	});
@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 		if (currentUser != null) {
 			alert.success('logged in');
 		}
-	}, [currentUser]);
+	}, []);
 
 	return (
 		<AuthContext.Provider
