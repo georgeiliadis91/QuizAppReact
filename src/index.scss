@@ -6,8 +6,8 @@
 //=============mixins====================
 
 @mixin displayList {
-	border: solid 1px #555;
-	margin: 1rem 0;
+	border: solid 1px #ccc;
+	margin: 1rem 0.15rem;
 	padding: 1rem 0.5rem;
 	border-radius: 5px;
 	display: flex;
@@ -15,6 +15,9 @@
 	align-items: center;
 	justify-content: space-between;
 	transition: all 150ms ease-in-out;
+	&:hover {
+		box-shadow: 0 0 6px rgba(35, 173, 255, 1);
+	}
 }
 //========GENERAL RULES=========
 

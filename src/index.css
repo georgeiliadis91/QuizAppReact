@@ -156,8 +156,8 @@ div.quiz-slider-div .quiz-answer {
   padding-right: 1rem;
 }
 #admin-dashboard ul li {
-  border: solid 1px #555;
-  margin: 1rem 0;
+  border: solid 1px #ccc;
+  margin: 1rem 0.15rem;
   padding: 1rem 0.5rem;
   border-radius: 5px;
   display: flex;
@@ -165,6 +165,9 @@ div.quiz-slider-div .quiz-answer {
   align-items: center;
   justify-content: space-between;
   transition: all 150ms ease-in-out;
+}
+#admin-dashboard ul li:hover {
+  box-shadow: 0 0 6px #23adff;
 }
 #admin-dashboard ul li label {
   margin: 0.25rem 0.5rem;
@@ -182,8 +185,8 @@ div.quiz-slider-div .quiz-answer {
 }
 
 #home-page li {
-  border: solid 1px #555;
-  margin: 1rem 0;
+  border: solid 1px #ccc;
+  margin: 1rem 0.15rem;
   padding: 1rem 0.5rem;
   border-radius: 5px;
   display: flex;
@@ -191,6 +194,9 @@ div.quiz-slider-div .quiz-answer {
   align-items: center;
   justify-content: space-between;
   transition: all 150ms ease-in-out;
+}
+#home-page li:hover {
+  box-shadow: 0 0 6px #23adff;
 }
 #home-page li a {
   display: block;
@@ -201,8 +207,8 @@ div.quiz-slider-div .quiz-answer {
 }
 
 .rankings-list li {
-  border: solid 1px #555;
-  margin: 1rem 0;
+  border: solid 1px #ccc;
+  margin: 1rem 0.15rem;
   padding: 1rem 0.5rem;
   border-radius: 5px;
   display: flex;
@@ -210,6 +216,9 @@ div.quiz-slider-div .quiz-answer {
   align-items: center;
   justify-content: space-between;
   transition: all 150ms ease-in-out;
+}
+.rankings-list li:hover {
+  box-shadow: 0 0 6px #23adff;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
+import { Container } from 'react-grid';
 // import FormRadioBtn from '../components/FormRadioBtn';
 
 // TODO NEEN TO HANDLE THE ONCHANGE FOR EACH FIELD. INDEX MIGHT BE USEFULL
@@ -130,7 +131,7 @@ const EditQuiz = ({ match }) => {
 	//==================render===========================
 
 	return (
-		<div>
+		<Container>
 			<h2 className="page-title">ID: {id}</h2>
 			<ul>
 				{loading ? (
@@ -297,7 +298,7 @@ const EditQuiz = ({ match }) => {
 					</div>
 				)}
 			</ul>
-		</div>
+		</Container>
 	);
 };
 
