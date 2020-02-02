@@ -47,22 +47,22 @@ const Home = () => {
 
 			<h3>Λίστα με quiz</h3>
 			<Container>
-				<ul>
-					{loading ? (
-						<ClipLoader
-							css={override}
-							size={150}
-							color={'coral'}
-							loading={loading}
-						/>
-					) : (
-						quizes.map(quiz => (
-							<li key={quiz.id}>
-								<Link to={'quiz/' + quiz.id}>{quiz.name}</Link>
-							</li>
-						))
-					)}
-				</ul>
+				{loading ? (
+					<ClipLoader
+						css={override}
+						size={150}
+						color={'coral'}
+						loading={loading}
+					/>
+				) : (
+					quizes.map(quiz => (
+						<Link to={'quiz/' + quiz.id}>
+							<div className="quiz-list-item" key={quiz.id}>
+								<div className="quiz-item-name">{quiz.name}</div>
+							</div>
+						</Link>
+					))
+				)}
 			</Container>
 		</div>
 	);

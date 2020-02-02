@@ -184,7 +184,7 @@ div.quiz-slider-div .quiz-answer {
   box-shadow: 0 0 6px #23adff;
 }
 
-#home-page li {
+#home-page .quiz-list-item {
   border: solid 1px #ccc;
   margin: 1rem 0.15rem;
   padding: 1rem 0.5rem;
@@ -195,10 +195,10 @@ div.quiz-slider-div .quiz-answer {
   justify-content: space-between;
   transition: all 150ms ease-in-out;
 }
-#home-page li:hover {
+#home-page .quiz-list-item:hover {
   box-shadow: 0 0 6px #23adff;
 }
-#home-page li a {
+#home-page .quiz-list-item .quiz-item-name {
   display: block;
   margin: 0 auto;
   text-decoration: none;

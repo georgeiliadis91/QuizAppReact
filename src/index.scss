@@ -204,9 +204,9 @@ div.quiz-slider-div {
 }
 
 #home-page {
-	li {
+	.quiz-list-item {
 		@include displayList();
-		a {
+		.quiz-item-name {
 			display: block;
 			margin: 0 auto;
 			text-decoration: none;
