@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
-import { Container } from 'react-grid';
+import { Container, Row, Col } from 'react-grid';
 // import FormRadioBtn from '../components/FormRadioBtn';
 
 // TODO NEEN TO HANDLE THE ONCHANGE FOR EACH FIELD. INDEX MIGHT BE USEFULL
@@ -143,9 +143,6 @@ const EditQuiz = ({ match }) => {
 					/>
 				) : (
 					<div id="admin-quiz-creation-form">
-						<button onClick={() => handleAddQuestion()}>
-							Add new question{' '}
-						</button>
 						<form onSubmit={handleSubmit}>
 							<label>
 								Quiz name:
@@ -156,6 +153,8 @@ const EditQuiz = ({ match }) => {
 									onChange={event => handmeNameChange(event)}
 								/>
 							</label>
+							<br />
+							<br />
 							{quiz.questions.map((question, index) => (
 								<div key={index} className="question-row">
 									<label>
@@ -167,44 +166,54 @@ const EditQuiz = ({ match }) => {
 											onChange={event => handleInputChange(index, event)}
 										/>
 									</label>
-
-									<label>
-										Answer A:
-										<input
-											name="answerA"
-											type="text"
-											value={question.answerA}
-											onChange={event => handleInputChange(index, event)}
-										/>
-									</label>
-									<label>
-										Answer B:
-										<input
-											name="answerB"
-											type="text"
-											value={question.answerB}
-											onChange={event => handleInputChange(index, event)}
-										/>
-									</label>
-									<label>
-										Answer C:
-										<input
-											name="answerC"
-											type="text"
-											value={question.answerC}
-											onChange={event => handleInputChange(index, event)}
-										/>
-									</label>
-									<label>
-										Answer D:
-										<input
-											name="answerD"
-											type="text"
-											value={question.answerD}
-											onChange={event => handleInputChange(index, event)}
-										/>
-									</label>
-
+									<Row>
+										<Col md={6}>
+											<label>
+												Answer A:
+												<input
+													name="answerA"
+													type="text"
+													value={question.answerA}
+													onChange={event => handleInputChange(index, event)}
+												/>
+											</label>
+										</Col>
+										<Col md={6}>
+											<label>
+												Answer B:
+												<input
+													name="answerB"
+													type="text"
+													value={question.answerB}
+													onChange={event => handleInputChange(index, event)}
+												/>
+											</label>
+										</Col>
+									</Row>
+									<Row>
+										<Col md={6}>
+											<label>
+												Answer C:
+												<input
+													name="answerC"
+													type="text"
+													value={question.answerC}
+													onChange={event => handleInputChange(index, event)}
+												/>
+											</label>
+										</Col>
+										<Col md={6}>
+											<label>
+												Answer D:
+												<input
+													name="answerD"
+													type="text"
+													value={question.answerD}
+													onChange={event => handleInputChange(index, event)}
+												/>
+											</label>
+										</Col>
+									</Row>
 									{/* <FormRadioBtn
 										index={index}
 										correctAnswer={question.correctAnswer}
@@ -215,36 +224,53 @@ const EditQuiz = ({ match }) => {
 										id={'radio-group' + index}
 										onChange={event => setCorrectAnswer(index, event)}
 									>
-										<input
-											type="radio"
-											value={1}
-											name={'radio-group' + index}
-											checked={question.correctAnswer === 1}
-										/>
-										1
-										<input
-											type="radio"
-											value={2}
-											name={'radio-group' + index}
-											checked={question.correctAnswer === 2}
-										/>
-										2
-										<input
-											type="radio"
-											value={3}
-											name={'radio-group' + index}
-											checked={question.correctAnswer === 3}
-										/>
-										3
-										<input
-											type="radio"
-											value={4}
-											name={'radio-group' + index}
-											checked={question.correctAnswer === 4}
-										/>
-										4
+										<Row>
+											<Col md={3}>
+												<label>
+													1
+													<input
+														type="radio"
+														value={1}
+														name={'radio-group' + index}
+														checked={question.correctAnswer === 1}
+													/>
+												</label>
+											</Col>
+											<Col md={3}>
+												<label>
+													2
+													<input
+														type="radio"
+														value={2}
+														name={'radio-group' + index}
+														checked={question.correctAnswer === 2}
+													/>
+												</label>
+											</Col>
+											<Col md={3}>
+												<label>
+													3
+													<input
+														type="radio"
+														value={3}
+														name={'radio-group' + index}
+														checked={question.correctAnswer === 3}
+													/>
+												</label>
+											</Col>
+											<Col md={3}>
+												<label>
+													4
+													<input
+														type="radio"
+														value={4}
+														name={'radio-group' + index}
+														checked={question.correctAnswer === 4}
+													/>
+												</label>
+											</Col>
+										</Row>
 									</div>
-
 									{/* <div className="radio">
 										<label>
 											<input
@@ -292,9 +318,13 @@ const EditQuiz = ({ match }) => {
 									</button>
 								</div>
 							))}
-
+							<br />
 							<button type="submit">Submit Changes</button>
 						</form>
+						<br />
+						<button onClick={() => handleAddQuestion()}>
+							Add new question{' '}
+						</button>
 					</div>
 				)}
 			</ul>

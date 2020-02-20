@@ -80,7 +80,7 @@ button:active {
 }
 
 .main-navbar {
-	background: rgb(0, 153, 255);
+	background: #0abde3;
 	color: #fefefe;
 	margin-bottom: 3rem;
 
@@ -220,4 +220,8 @@ div.quiz-slider-div {
 	li {
 		@include displayList();
 	}
+}
+
+#admin-quiz-creation-form {
+	padding-bottom: 3rem;
 }

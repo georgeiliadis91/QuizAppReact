@@ -61,7 +61,7 @@ button:active {
 }
 
 .main-navbar {
-  background: #0099ff;
+  background: #0abde3;
   color: #fefefe;
   margin-bottom: 3rem;
 }
@@ -219,6 +219,10 @@ div.quiz-slider-div .quiz-answer {
 }
 .rankings-list li:hover {
   box-shadow: 0 0 6px #23adff;
+}
+
+#admin-quiz-creation-form {
+  padding-bottom: 3rem;
 }
 
 /*# sourceMappingURL=index.css.map */

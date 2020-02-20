@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
-import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 import { Container, Row, Col } from 'react-grid';
 
@@ -15,7 +14,39 @@ const override = css`
 const Quiz = ({ match }) => {
 	const { id } = match.params;
 	const [quiz, setQuiz] = useState([]);
+	const [answers, setAnswers] = useState([]);
 	const [loading, setLoading] = useState(true);
+
+	const handleSubmit = useCallback(
+		event => {
+			event.preventDefault();
+			// console.log(quiz);
+			console.log(answers);
+			axios
+				.post(
+					'http://geoili.me:4000/quizes/answers/' + id,
+					JSON.stringify(answers)
+				)
+				.then(res => {
+					setLoading(true);
+					console.log(res.data);
+				})
+				.catch(err => {
+					alert.error(err.message);
+				});
+		},
+		[quiz]
+	);
+
+	const setCorrectAnswer = (index, event) => {
+		const values = answers;
+		// values[index] = parseInt(event.target.value);
+		if (index !== -1) {
+			values[index] = event.target.value;
+		}
+		setAnswers(values);
+		console.log(answers);
+	};
 
 	useEffect(() => {
 		axios
@@ -49,7 +80,7 @@ const Quiz = ({ match }) => {
 						loading={loading}
 					/>
 				) : (
-					<Slider infinite={false}>
+					<form onSubmit={handleSubmit}>
 						{quiz.questions.map((question, index) => (
 							<div key={index} className="quiz-slider-div">
 								<Row>
@@ -59,30 +90,57 @@ const Quiz = ({ match }) => {
 										</div>
 									</Col>
 								</Row>
-								<Row>
-									<Col xs={6}>
-										<div className="quiz-answer">A: {question.answerA}</div>
-									</Col>
-									<Col xs={6}>
-										<div className="quiz-answer">B: {question.answerB}</div>
-									</Col>
-								</Row>
-								<Row>
-									<Col xs={6}>
-										<div className="quiz-answer">C: {question.answerC}</div>
-									</Col>
-									<Col xs={6}>
-										<div className="quiz-answer">D: {question.answerD}</div>
-									</Col>
-								</Row>
-								<Row>
-									<Col xs={12}>
-										<div>Correct Answer: {question.correctAnswer}</div>
-									</Col>
-								</Row>
+								<div
+									id={'radio-group' + index}
+									onChange={event => setCorrectAnswer(index, event)}
+								>
+									<Row>
+										<Col md={3}>
+											<label>
+												{question.answerA}
+												<input
+													type="radio"
+													value={1}
+													name={'radio-group' + index}
+												/>
+											</label>
+										</Col>
+										<Col md={3}>
+											<label>
+												{question.answerB}
+												<input
+													type="radio"
+													value={2}
+													name={'radio-group' + index}
+												/>
+											</label>
+										</Col>
+										<Col md={3}>
+											<label>
+												{question.answerC}
+												<input
+													type="radio"
+													value={3}
+													name={'radio-group' + index}
+												/>
+											</label>
+										</Col>
+										<Col md={3}>
+											<label>
+												{question.answerD}
+												<input
+													type="radio"
+													value={4}
+													name={'radio-group' + index}
+												/>
+											</label>
+										</Col>
+									</Row>
+								</div>
 							</div>
 						))}
-					</Slider>
+						<button type="submit">Submit Answers</button>
+					</form>
 				)}
 			</Container>
 		</div>
