@@ -4,6 +4,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 import 'react-animated-slider/build/horizontal.css';
 import { Container, Row, Col } from 'react-grid';
+import { useAlert } from 'react-alert';
 
 const override = css`
 	display: block;
@@ -12,6 +13,7 @@ const override = css`
 `;
 
 const Quiz = ({ match }) => {
+	const alert = useAlert();
 	const { id } = match.params;
 	const [quiz, setQuiz] = useState([]);
 	const [answers, setAnswers] = useState([]);
@@ -24,12 +26,13 @@ const Quiz = ({ match }) => {
 			console.log(answers);
 			axios
 				.post(
-					'http://geoili.me:4000/quizes/answers/' + id,
+					'http://geoili.me:4000/quizes/submit/' + id,
 					JSON.stringify(answers)
 				)
 				.then(res => {
 					setLoading(true);
 					console.log(res.data);
+					console.log('here');
 				})
 				.catch(err => {
 					alert.error(err.message);
