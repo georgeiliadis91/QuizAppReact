@@ -25,14 +25,12 @@ const Quiz = ({ match }) => {
 			// console.log(quiz);
 			console.log(answers);
 			axios
-				.post(
-					'http://geoili.me:4000/quizes/submit/' + id,
-					JSON.stringify(answers)
-				)
+				.post('http://geoili.me:4000/quizes/submit/' + id, answers)
 				.then(res => {
 					setLoading(true);
 					console.log(res.data);
 					console.log('here');
+					alert.success(res.data.message);
 				})
 				.catch(err => {
 					alert.error(err.message);
