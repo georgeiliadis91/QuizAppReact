@@ -7,7 +7,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({ children }) => {
 	const alert = useAlert();
 
-	const [currentUser, setCurrentUser] = useState([''], () => {
+	const [currentUser, setCurrentUser] = useState(null, () => {
 		const localData = localStorage.getItem('userData');
 		return localData ? JSON.parse(localData) : [];
 	});

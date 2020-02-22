@@ -14,17 +14,19 @@ li {
 
 input {
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 0.75rem;
   margin: 0.75rem 0;
   display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #e2e5e8;
+  border-radius: 0px;
   box-sizing: border-box;
   font-size: 1.2rem;
+  color: #4b5050;
+  text-align: left;
 }
 
 body {
-  background: #fefefe;
+  background: #f2f5f8;
   font-family: "FiraSans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -223,6 +225,13 @@ div.quiz-slider-div .quiz-answer {
 
 #admin-quiz-creation-form {
   padding-bottom: 3rem;
+}
+
+.css-2z7i4f-Container {
+  background: #fff;
+  box-shadow: 0 3px 12px 0 #e2e5e8;
+  padding: 4rem 1.25rem 2rem;
+  margin-bottom: 2rem;
 }
 
 /*# sourceMappingURL=index.css.map */
