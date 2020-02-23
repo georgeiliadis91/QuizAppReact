@@ -3,6 +3,7 @@ import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 import { Link } from 'react-router-dom';
+import { useAlert } from 'react-alert';
 
 import { Container } from 'react-grid';
 
@@ -15,6 +16,7 @@ const override = css`
 const Home = () => {
 	const [quizes, setQuizes] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const alert = useAlert();
 
 	useEffect(() => {
 		setQuizes([]);
