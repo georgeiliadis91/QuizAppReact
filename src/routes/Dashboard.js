@@ -19,7 +19,7 @@ const Dashboard = ({ history }) => {
 
 	const handleDelete = id => {
 		axios
-			.delete('http://geoili.me:4000/quizes/' + id)
+			.delete('https://geoili.me:4000/quizes/' + id)
 			.then(res => {
 				setLoading(true);
 			})
@@ -37,7 +37,7 @@ const Dashboard = ({ history }) => {
 		const { name } = event.target.elements;
 
 		axios
-			.post('http://geoili.me:4000/quizes/', {
+			.post('https://geoili.me:4000/quizes/', {
 				name: name.value
 			})
 			.then(res => {
@@ -51,7 +51,7 @@ const Dashboard = ({ history }) => {
 	useEffect(() => {
 		setQuizes([]);
 		axios
-			.get('http://geoili.me:4000/quizes/')
+			.get('https://geoili.me:4000/quizes/')
 			.then(res => {
 				const quizes = res.data;
 

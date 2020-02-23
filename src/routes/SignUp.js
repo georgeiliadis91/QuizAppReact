@@ -28,7 +28,7 @@ const SignUp = ({ history }) => {
 								username = email.value;
 							}
 							axios
-								.post('http://geoili.me:4000/users', {
+								.post('https://geoili.me:4000/users', {
 									name: username,
 									email: email.value,
 									firebase_id: user.user.uid

@@ -18,7 +18,7 @@ const Rankings = () => {
 	useEffect(() => {
 		setUsers([]);
 		axios
-			.get('http://geoili.me:4000/users')
+			.get('https://geoili.me:4000/users')
 			.then(res => {
 				const users = res.data;
 

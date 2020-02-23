@@ -96,7 +96,7 @@ const EditQuiz = ({ match }) => {
 			// console.log(quiz);
 
 			axios
-				.patch('http://geoili.me:4000/quizes/' + id, quiz)
+				.patch('https://geoili.me:4000/quizes/' + id, quiz)
 				.then(res => {
 					setLoading(true);
 					console.log(res.data);
@@ -111,7 +111,7 @@ const EditQuiz = ({ match }) => {
 	//==================================useEffect======================================
 	useEffect(() => {
 		axios
-			.get('http://geoili.me:4000/quizes/' + id)
+			.get('https://geoili.me:4000/quizes/' + id)
 			.then(res => {
 				const quiz = res.data;
 

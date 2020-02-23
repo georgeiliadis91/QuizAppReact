@@ -19,7 +19,7 @@ const Home = () => {
 	useEffect(() => {
 		setQuizes([]);
 		axios
-			.get('http://geoili.me:4000/quizes/')
+			.get('https://geoili.me:4000/quizes/')
 			.then(res => {
 				const quizes = res.data;
 
