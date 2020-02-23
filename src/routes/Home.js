@@ -21,7 +21,7 @@ const Home = () => {
 	useEffect(() => {
 		setQuizes([]);
 		axios
-			.get('https://geoili.me:4000/quizes/')
+			.get(process.env.REACT_APP_BASE_URL + '/quizes/')
 			.then(res => {
 				const quizes = res.data;
 

@@ -25,7 +25,7 @@ const Quiz = ({ match }) => {
 			// console.log(quiz);
 			console.log(answers);
 			axios
-				.post('https://geoili.me:4000/quizes/submit/' + id, answers)
+				.post(process.env.REACT_APP_BASE_URL + '/quizes/submit/' + id, answers)
 				.then(res => {
 					setLoading(true);
 					console.log(res.data);
@@ -51,7 +51,7 @@ const Quiz = ({ match }) => {
 
 	useEffect(() => {
 		axios
-			.get('https://geoili.me:4000/quizes/' + id)
+			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
 			.then(res => {
 				const quiz = res.data;
 
