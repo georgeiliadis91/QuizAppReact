@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const Menu = () => {
 	const { currentUser } = useContext(AuthContext);
-
 	return (
 		<div className="main-menu">
 			{currentUser ? (
@@ -19,9 +18,11 @@ const Menu = () => {
 					<li>
 						<Link to="/profile">Προφίλ</Link>
 					</li>
-					<li>
-						<Link to="/dashboard">Διαχείριση</Link>
-					</li>
+					{currentUser.email == process.env.REACT_APP_ADMINISTRATOR_EMAIL && (
+						<li>
+							<Link to="/dashboard">Διαχείριση</Link>
+						</li>
+					)}
 					<li>
 						<button onClick={() => app.auth().signOut()}>Αποσύνδεση</button>
 					</li>
