@@ -19,7 +19,7 @@ const Dashboard = ({ history }) => {
 
 	const handleDelete = id => {
 		axios
-			.delete(process.env.REACT_APP_BASE_URL + '/quizes' + id)
+			.delete(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
 			.then(res => {
 				setLoading(true);
 			})

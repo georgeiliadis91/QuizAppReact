@@ -51,7 +51,7 @@ const Quiz = ({ match }) => {
 
 	useEffect(() => {
 		axios
-			.get(process.env.REACT_APP_BASE_URL + '/quizes' + id)
+			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
 			.then(res => {
 				const quiz = res.data;
 

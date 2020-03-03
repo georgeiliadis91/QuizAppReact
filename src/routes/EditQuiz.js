@@ -96,7 +96,7 @@ const EditQuiz = ({ match }) => {
 			// console.log(quiz);
 
 			axios
-				.patch(process.env.REACT_APP_BASE_URL + '/quizes' + id, quiz)
+				.patch(process.env.REACT_APP_BASE_URL + '/quizes/' + id, quiz)
 				.then(res => {
 					setLoading(true);
 					console.log(res.data);
@@ -111,7 +111,7 @@ const EditQuiz = ({ match }) => {
 	//==================================useEffect======================================
 	useEffect(() => {
 		axios
-			.get(process.env.REACT_APP_BASE_URL + '/quizes' + id)
+			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
 			.then(res => {
 				const quiz = res.data;
 
