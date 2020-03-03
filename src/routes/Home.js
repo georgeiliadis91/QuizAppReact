@@ -21,7 +21,7 @@ const Home = () => {
 	useEffect(() => {
 		setQuizes([]);
 		axios
-			.get(process.env.REACT_APP_BASE_URL + '/quizes/')
+			.get(process.env.REACT_APP_BASE_URL + '/quizes')
 			.then(res => {
 				const quizes = res.data;
 

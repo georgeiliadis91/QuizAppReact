@@ -19,7 +19,7 @@ const Dashboard = ({ history }) => {
 
 	const handleDelete = id => {
 		axios
-			.delete(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
+			.delete(process.env.REACT_APP_BASE_URL + '/quizes' + id)
 			.then(res => {
 				setLoading(true);
 			})
@@ -37,7 +37,7 @@ const Dashboard = ({ history }) => {
 		const { name } = event.target.elements;
 
 		axios
-			.post(process.env.REACT_APP_BASE_URL + '/quizes/', {
+			.post(process.env.REACT_APP_BASE_URL + '/quizes', {
 				name: name.value
 			})
 			.then(res => {
@@ -51,7 +51,7 @@ const Dashboard = ({ history }) => {
 	useEffect(() => {
 		setQuizes([]);
 		axios
-			.get(process.env.REACT_APP_BASE_URL + '/quizes/')
+			.get(process.env.REACT_APP_BASE_URL + '/quizes')
 			.then(res => {
 				const quizes = res.data;
 
