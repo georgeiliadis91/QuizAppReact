@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 import 'react-animated-slider/build/horizontal.css';
 import { Container, Row, Col } from 'react-grid';
 import { useAlert } from 'react-alert';
+import { AuthContext } from '../contexts/Auth';
 
 const override = css`
 	display: block;
@@ -18,14 +19,21 @@ const Quiz = ({ match }) => {
 	const [quiz, setQuiz] = useState([]);
 	const [answers, setAnswers] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const { currentUser } = useContext(AuthContext);
+
+	// console.log(currentUser);
 
 	const handleSubmit = useCallback(
 		event => {
 			event.preventDefault();
 			// console.log(quiz);
-			console.log(answers);
+			// console.log(answers);
+
 			axios
-				.post(process.env.REACT_APP_BASE_URL + '/quizes/submit/' + id, answers)
+				.post(process.env.REACT_APP_BASE_URL + '/quizes/submit/' + id, {
+					answers: answers,
+					userdata: { fid: currentUser.uid }
+				})
 				.then(res => {
 					setLoading(true);
 					console.log(res.data);
@@ -54,13 +62,11 @@ const Quiz = ({ match }) => {
 			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
 			.then(res => {
 				const quiz = res.data;
-
 				setQuiz({
 					id: quiz._id,
 					name: quiz.name,
 					questions: quiz.questions
 				});
-
 				setLoading(false);
 			})
 			.catch(error => {
