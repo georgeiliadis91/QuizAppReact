@@ -32,7 +32,8 @@ const Quiz = ({ match }) => {
 			axios
 				.post(process.env.REACT_APP_BASE_URL + '/quizes/submit/' + id, {
 					answers: answers,
-					userdata: { fid: currentUser.uid }
+					firebase_id: currentUser.uid,
+					quiz_id: id
 				})
 				.then(res => {
 					setLoading(true);
