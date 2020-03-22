@@ -37,9 +37,11 @@ const Quiz = ({ match }) => {
 				})
 				.then(res => {
 					setLoading(true);
-					console.log(res.data);
-					console.log('here');
-					alert.success(res.data.message);
+					if (res.data.status) {
+						alert.success(res.data.message);
+					} else {
+						alert.error(res.data.message);
+					}
 				})
 				.catch(err => {
 					alert.error(err.message);
