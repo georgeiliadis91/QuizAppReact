@@ -57,7 +57,7 @@ const Quiz = ({ match }) => {
 			values[index] = event.target.value;
 		}
 		setAnswers(values);
-		console.log(answers);
+		// console.log(answers);
 	};
 
 	useEffect(() => {

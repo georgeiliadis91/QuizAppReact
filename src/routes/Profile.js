@@ -1,16 +1,57 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useEffect, useContext, useCallback, useState } from 'react';
 import { AuthContext } from '../contexts/Auth';
 import { GoUnverified } from 'react-icons/go';
 import { MdVerifiedUser } from 'react-icons/md';
 import app from '../firebase/firebase';
 import { useAlert } from 'react-alert';
+import axios from 'axios';
 
 import { Container, Row, Col } from 'react-grid';
 
 const Profile = () => {
 	const alert = useAlert();
+	const [userData, setUserData] = useState([]);
+	const [averages, setAverages] = useState({});
 
 	const { currentUser } = useContext(AuthContext);
+
+	useEffect(() => {
+		axios
+			.get(
+				process.env.REACT_APP_BASE_URL + '/results/allscores/' + currentUser.uid
+			)
+			.then(res => {
+				// setLoading(true);
+				// const  results} = res.data;
+				// console.log('Profile -> results', res.data);
+
+				setUserData(res.data);
+			})
+			.catch(err => {
+				alert.error(err.message);
+			});
+	}, []);
+
+	useEffect(() => {
+		axios
+			.get(
+				process.env.REACT_APP_BASE_URL +
+					'/results/totalscore/' +
+					currentUser.uid
+			)
+			.then(res => {
+				// setLoading(true);
+				const { totalScore, average } = res.data;
+
+				setAverages({
+					totalScore: totalScore,
+					average: average
+				});
+			})
+			.catch(err => {
+				alert.error(err.message);
+			});
+	}, []);
 
 	const handlePasswordReset = useCallback(async event => {
 		event.preventDefault();
@@ -35,6 +76,8 @@ const Profile = () => {
 			alert.error('Passwords do not match.');
 		}
 	}, []);
+
+	console.log(userData);
 
 	return (
 		<div id="user-profile">
@@ -84,6 +127,18 @@ const Profile = () => {
 					<Col xs={12} sm={9} className="user-stats">
 						<div>
 							<h3>Στατιστικά και σκορ</h3>
+						</div>
+						<div className="user-data-body-stats">
+							<ul>
+								<li>Total Score:{averages.totalScore}</li>
+								<li>Average: {averages.average}</li>
+								{userData.map((quiz, index) => (
+									<li key={index}>
+										Quiz id: {quiz.quiz_id}
+										Quiz name: NEED TO FETCH THE NAME Score: {quiz.bestScore}
+									</li>
+								))}
+							</ul>
 						</div>
 					</Col>
 				</Row>
