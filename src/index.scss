@@ -1,3 +1,6 @@
+//=========varialbles=====================
+$text-dark: #3f3f3f;
+
 @font-face {
 	font-family: 'FiraSans';
 	src: local('FiraSans'), url(./fonts/FiraSans-Regular.ttf) format('truetype');
@@ -43,6 +46,7 @@ $button-active-blue: #1669f2;
 		border-radius: 2px;
 		box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 		cursor: pointer;
+
 		.social-login-icon-wrapper {
 			position: absolute;
 			margin-top: 1px;
@@ -135,13 +139,16 @@ button:active {
 	}
 	.main-menu {
 		font-size: 1.2rem;
+
 		ul {
 			display: flex;
 			justify-content: flex-end;
 			padding-right: 2rem;
+
 			li {
 				display: block;
 				padding: 0.25rem 0.5rem;
+
 				a {
 					text-decoration: none;
 					color: #fefefe;
@@ -157,25 +164,113 @@ h2.page-title {
 }
 
 #user-profile {
-	.user-data {
-		border: dashed 1px #333;
-		border-radius: 5px;
-		padding: 2rem 0;
-		h3 {
-			margin-bottom: 2rem;
+	text-align: left;
+	color: $text-dark;
+	.css-2z7i4f-Container {
+		padding: 0;
+		.title-wrapper {
+			background: red;
+			padding: 1.5rem;
+			h2 {
+				color: #fff;
+				border-bottom: 1px solid #e0e0e0;
+				padding-bottom: 1rem;
+				margin: auto;
+				max-width: 400px;
+			}
 		}
-		#password-change {
-			border-top: dashed 1px #333;
-			margin-top: 2rem;
-			padding-top: 2rem;
-			display: flex;
-			flex-direction: column;
+
+		.css-1gqikdj-Row {
+			margin: 0 !important;
 		}
-	}
-	.user-stats {
-		padding-top: 2rem;
-		h3 {
-			font-size: 1.3rem;
+
+		.user-data {
+			border-right: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 2rem 0;
+			margin: 0;
+			margin: 0 !important;
+			text-align: left;
+
+			.user-account-block {
+				padding: 0 0.75rem;
+
+				p {
+					text-align: left;
+					line-height: 1.6;
+					svg {
+						height: 1.5rem;
+						padding-left: 0.25rem;
+						transform: translate(0, 25%);
+					}
+				}
+			}
+
+			h3 {
+				margin-bottom: 2rem;
+				border-bottom: 1px solid #e0e0e0;
+				padding-bottom: 1rem;
+			}
+
+			#password-change {
+				border-top: solid 1px #e0e0e0;
+				margin-top: 2rem;
+				padding-top: 2rem;
+				display: flex;
+				flex-direction: column;
+			}
+			form {
+				text-align: left;
+				margin: 0;
+				padding: 0 0.75rem;
+
+				label {
+					padding-left: 0.75rem;
+				}
+
+				input {
+					width: 100%;
+				}
+
+				button {
+					float: right;
+				}
+			}
+		}
+		.user-stats {
+			padding: 2rem;
+
+			h3 {
+				font-size: 1.6rem;
+				border-bottom: 1px solid #e0e0e0;
+				padding-bottom: 1rem;
+				margin-bottom: 2rem;
+			}
+
+			div.totals-wrapper {
+				margin-bottom: 1rem;
+				border-bottom: 1px solid #e0e0e0;
+				padding-bottom: 2rem;
+				line-height: 1.6;
+				p {
+					text-align: left;
+					font-size: 1.5rem;
+				}
+			}
+
+			ul {
+				li {
+					text-align: left;
+					padding: 0.5rem 0.25rem;
+
+					&:nth-child(odd) {
+						background: #fffbd7;
+					}
+					&:nth-child(even) {
+						background: #fffdef;
+					}
+				}
+			}
 		}
 	}
 }

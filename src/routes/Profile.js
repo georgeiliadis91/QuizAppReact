@@ -21,10 +21,6 @@ const Profile = () => {
 				process.env.REACT_APP_BASE_URL + '/results/allscores/' + currentUser.uid
 			)
 			.then(res => {
-				// setLoading(true);
-				// const  results} = res.data;
-				// console.log('Profile -> results', res.data);
-
 				setUserData(res.data);
 			})
 			.catch(err => {
@@ -81,45 +77,41 @@ const Profile = () => {
 
 	return (
 		<div id="user-profile">
-			<h2 className="page-title">Προφίλ Χρήστη</h2>
 			<Container>
+				<div className="title-wrapper">
+					<h2 className="page-title">Προφίλ Χρήστη</h2>
+				</div>
 				<Row>
 					<Col xs={12} sm={3} className="user-data">
-						<h3>Στοιχεία Χρήστη</h3>
-						<div>email: {currentUser.email}</div>
-						<div>
-							{currentUser.emailVerified ? (
-								<div>
-									Verified <MdVerifiedUser size="2rem" />
-								</div>
-							) : (
-								<div>
-									Unverified
-									<GoUnverified size="2rem" />
-								</div>
-							)}
+						<div className="user-account-block">
+							<h3>Στοιχεία Χρήστη</h3>
+							<p>Email: {currentUser.email}</p>
+							<div>
+								{currentUser.emailVerified ? (
+									<p>
+										Verified: <MdVerifiedUser size="2rem" />
+									</p>
+								) : (
+									<p>
+										Unverified:
+										<GoUnverified size="2rem" />
+									</p>
+								)}
+							</div>
 						</div>
 
 						<div id="password-change">
 							<h3>Αλλαγή κωδικού πρόσβασης</h3>
 
 							<form onSubmit={handlePasswordReset}>
-								<label>
-									Νέος Κωδικός
-									<input
-										name="password"
-										type="password"
-										placeholder="Password"
-									/>
-								</label>
-								<label>
-									Επιβεβαίωση κωδικού
-									<input
-										name="password2"
-										type="password"
-										placeholder="Verify Password"
-									/>
-								</label>
+								<label>Νέος Κωδικός</label>
+								<input name="password" type="password" placeholder="Password" />
+								<label>Επιβεβαίωση κωδικού</label>
+								<input
+									name="password2"
+									type="password"
+									placeholder="Verify Password"
+								/>
 								<button type="submit">Αλλαγή κωδικού</button>
 							</form>
 						</div>
@@ -129,13 +121,14 @@ const Profile = () => {
 							<h3>Στατιστικά και σκορ</h3>
 						</div>
 						<div className="user-data-body-stats">
+							<div className="totals-wrapper">
+								<p>Total Score: {averages.totalScore}</p>
+								<p>Average: {averages.average}</p>
+							</div>
 							<ul>
-								<li>Total Score:{averages.totalScore}</li>
-								<li>Average: {averages.average}</li>
 								{userData.map((quiz, index) => (
 									<li key={index}>
-										Quiz id: {quiz.quiz_id}
-										Quiz name: NEED TO FETCH THE NAME Score: {quiz.bestScore}
+										{quiz.quiz_name} - Score: {quiz.bestScore}
 									</li>
 								))}
 							</ul>

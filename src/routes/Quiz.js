@@ -19,6 +19,7 @@ const Quiz = ({ match }) => {
 	const [quiz, setQuiz] = useState([]);
 	const [answers, setAnswers] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [scoreData, setScoreData] = useState();
 	const { currentUser } = useContext(AuthContext);
 
 	// console.log(currentUser);
@@ -26,8 +27,6 @@ const Quiz = ({ match }) => {
 	const handleSubmit = useCallback(
 		event => {
 			event.preventDefault();
-			// console.log(quiz);
-			// console.log(answers);
 
 			axios
 				.post(process.env.REACT_APP_BASE_URL + '/quizes/submit/' + id, {
@@ -49,6 +48,23 @@ const Quiz = ({ match }) => {
 		},
 		[quiz]
 	);
+
+	useEffect(() => {
+		axios
+			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
+			.then(res => {
+				const quiz = res.data;
+				setQuiz({
+					id: quiz._id,
+					name: quiz.name,
+					questions: quiz.questions
+				});
+				setLoading(false);
+			})
+			.catch(error => {
+				alert.error(error.message);
+			});
+	}, [loading]);
 
 	const setCorrectAnswer = (index, event) => {
 		const values = answers;

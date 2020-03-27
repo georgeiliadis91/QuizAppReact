@@ -4,9 +4,9 @@ import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import app, { uiConfig } from '../firebase/firebase';
 import { AuthContext } from '../contexts/Auth';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Container } from 'react-grid';
 import * as firebase from 'firebase';
+import axios from 'axios';
 
 const Login = ({ history }) => {
 	const alert = useAlert();
@@ -29,10 +29,28 @@ const Login = ({ history }) => {
 		[history]
 	);
 
-	const handleGoogleLogin = () => {
+	const handleGoogleLogin = async () => {
 		const provider = new firebase.auth.GoogleAuthProvider();
 		try {
-			app.auth().signInWithPopup(provider);
+			await app
+				.auth()
+				.signInWithPopup(provider)
+				.then(user => {
+					//Getting user data as a response and then pushing the user data that is userfull on our backend
+
+					axios
+						.post(process.env.REACT_APP_BASE_URL + '/users', {
+							name: user.user.displayName,
+							email: user.user.email,
+							firebase_id: user.user.uid
+						})
+						.then(response => {
+							console.log(response);
+						})
+						.catch(error => {
+							console.log(error.message);
+						});
+				});
 
 			history.push('/');
 		} catch (error) {
@@ -40,10 +58,36 @@ const Login = ({ history }) => {
 		}
 	};
 
-	const handleFacebookLogin = () => {
+	const handleFacebookLogin = async () => {
 		const provider = new firebase.auth.FacebookAuthProvider();
 		try {
-			app.auth().signInWithPopup(provider);
+			await app
+				.auth()
+				.signInWithPopup(provider)
+				.then(user => {
+					//Getting user data as a response and then pushing the user data that is userfull on our backend
+					let email;
+
+					if (user.user.email == null) {
+						email = 'N/A - Facebook Login';
+					} else {
+						email = user.user.email;
+					}
+					console.log(user.user);
+
+					axios
+						.post(process.env.REACT_APP_BASE_URL + '/users', {
+							name: user.user.displayName,
+							email: email,
+							firebase_id: user.user.uid
+						})
+						.then(response => {
+							console.log(response);
+						})
+						.catch(error => {
+							console.log(error.message);
+						});
+				});
 			history.push('/');
 		} catch (error) {
 			alert.error(error.message);

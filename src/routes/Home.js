@@ -57,8 +57,8 @@ const Home = () => {
 						loading={loading}
 					/>
 				) : (
-					quizes.map(quiz => (
-						<Link to={'quiz/' + quiz.id}>
+					quizes.map((quiz, index) => (
+						<Link key={index} to={'quiz/' + quiz.id}>
 							<div className="quiz-list-item" key={quiz.id}>
 								<div className="quiz-item-name">{quiz.name}</div>
 							</div>
