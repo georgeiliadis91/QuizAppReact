@@ -18,7 +18,7 @@ import { FiPlusCircle } from 'react-icons/fi';
 const override = css`
 	display: block;
 	margin: 0 auto;
-	border-color: red;
+	border-color: #0abde3;
 `;
 
 const EditQuiz = ({ match }) => {
@@ -156,19 +156,17 @@ const EditQuiz = ({ match }) => {
 							<br />
 							{quiz.questions.map((question, index) => (
 								<div key={index} className="question-row">
-									<label>
-										Question:
-										<input
-											name="questionTitle"
-											type="text"
-											value={question.questionTitle}
-											onChange={event => handleInputChange(index, event)}
-										/>
-									</label>
+									<p>Question:</p>
+									<input
+										name="questionTitle"
+										type="text"
+										value={question.questionTitle}
+										onChange={event => handleInputChange(index, event)}
+									/>
 									<Row>
 										<Col md={6}>
 											<label>
-												Answer A:
+												Απάντηση A:
 												<input
 													name="answerA"
 													type="text"
@@ -179,7 +177,7 @@ const EditQuiz = ({ match }) => {
 										</Col>
 										<Col md={6}>
 											<label>
-												Answer B:
+												Απάντηση B:
 												<input
 													name="answerB"
 													type="text"
@@ -192,7 +190,7 @@ const EditQuiz = ({ match }) => {
 									<Row>
 										<Col md={6}>
 											<label>
-												Answer C:
+												Απάντηση C:
 												<input
 													name="answerC"
 													type="text"
@@ -203,7 +201,7 @@ const EditQuiz = ({ match }) => {
 										</Col>
 										<Col md={6}>
 											<label>
-												Answer D:
+												Απάντηση D:
 												<input
 													name="answerD"
 													type="text"

@@ -8,7 +8,7 @@ import { Container } from 'react-grid';
 const override = css`
 	display: block;
 	margin: 0 auto;
-	border-color: red;
+	border-color: #0abde3;
 `;
 
 const Rankings = () => {

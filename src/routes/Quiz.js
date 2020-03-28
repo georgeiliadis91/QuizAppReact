@@ -10,7 +10,7 @@ import { AuthContext } from '../contexts/Auth';
 const override = css`
 	display: block;
 	margin: 0 auto;
-	border-color: red;
+	border-color: #0abde3;
 `;
 
 const Quiz = ({ match }) => {
@@ -95,9 +95,8 @@ const Quiz = ({ match }) => {
 
 	return (
 		<div id="quiz-page">
-			<h2 className="page-title">Απαντήστε στο quiz</h2>
-			The quiz {id}
-			<Container>
+			<Container className="quiz-panel">
+				<h2 className="page-title">Απαντήστε στο quiz</h2>
 				{loading ? (
 					<ClipLoader
 						css={override}
@@ -111,8 +110,9 @@ const Quiz = ({ match }) => {
 							<div key={index} className="quiz-slider-div">
 								<Row>
 									<Col xs={12}>
+										<h4>Ερώτηση:</h4>
 										<div className="quiz-question">
-											Question: {question.questionTitle}
+											{question.questionTitle}
 										</div>
 									</Col>
 								</Row>
@@ -122,50 +122,42 @@ const Quiz = ({ match }) => {
 								>
 									<Row>
 										<Col md={3}>
-											<label>
-												{question.answerA}
-												<input
-													type="radio"
-													value={1}
-													name={'radio-group' + index}
-												/>
-											</label>
+											<label>{question.answerA}</label>
+											<input
+												type="radio"
+												value={1}
+												name={'radio-group' + index}
+											/>
 										</Col>
 										<Col md={3}>
-											<label>
-												{question.answerB}
-												<input
-													type="radio"
-													value={2}
-													name={'radio-group' + index}
-												/>
-											</label>
+											<label>{question.answerB}</label>
+											<input
+												type="radio"
+												value={2}
+												name={'radio-group' + index}
+											/>
 										</Col>
 										<Col md={3}>
-											<label>
-												{question.answerC}
-												<input
-													type="radio"
-													value={3}
-													name={'radio-group' + index}
-												/>
-											</label>
+											<label>{question.answerC}</label>
+											<input
+												type="radio"
+												value={3}
+												name={'radio-group' + index}
+											/>
 										</Col>
 										<Col md={3}>
-											<label>
-												{question.answerD}
-												<input
-													type="radio"
-													value={4}
-													name={'radio-group' + index}
-												/>
-											</label>
+											<label>{question.answerD}</label>
+											<input
+												type="radio"
+												value={4}
+												name={'radio-group' + index}
+											/>
 										</Col>
 									</Row>
 								</div>
 							</div>
 						))}
-						<button type="submit">Submit Answers</button>
+						<button type="submit">Ολοκλήρωση</button>
 					</form>
 				)}
 			</Container>

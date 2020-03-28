@@ -376,16 +376,39 @@ div.quiz-slider-div .quiz-answer {
   padding: 1rem 10rem;
   border-radius: 5px;
 }
-.quiz-edit-block .add-new-question {
+.quiz-edit-block .question-row {
+  background: #2c8ff1;
+  color: #fff;
+  padding: 1rem 10rem;
+  border-radius: 5px;
+  background: #0abde3;
   margin-bottom: 1rem;
 }
-.quiz-edit-block .add-new-question p {
-  font-size: 1.5rem;
-  padding-bottom: 1rem;
+.quiz-edit-block .add-new-question {
+  margin-bottom: 1rem;
 }
 .quiz-edit-block .add-new-question svg {
   color: #fefefe;
   cursor: pointer;
+}
+.quiz-edit-block p {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+#quiz-page .quiz-panel {
+  background: #2c8ff1;
+  color: #fff;
+  padding: 1rem 10rem;
+  border-radius: 5px;
+}
+#quiz-page .quiz-panel h4 {
+  margin-bottom: 0.5rem;
+}
+#quiz-page .quiz-panel .quiz-slider-div {
+  background: #0abde3;
+  margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=index.css.map */

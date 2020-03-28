@@ -10,7 +10,7 @@ import { Container } from 'react-grid';
 const override = css`
 	display: block;
 	margin: 0 auto;
-	border-color: red;
+	border-color: #0abde3;
 `;
 
 const Home = () => {
@@ -56,7 +56,6 @@ const Home = () => {
 					/>
 				) : (
 					quizes.map((quiz, index) => (
-
 						<Link key={index} to={'quiz/' + quiz.id}>
 							<div className="quiz-list-item" key={quiz.id}>
 								<div className="quiz-item-name">

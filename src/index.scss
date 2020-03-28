@@ -422,15 +422,34 @@ div.quiz-slider-div {
 
 .quiz-edit-block {
 	@include color-panel();
+	.question-row {
+		@include color-panel();
+		background: $background-light;
+		margin-bottom: 1rem;
+	}
 	.add-new-question {
 		margin-bottom: 1rem;
-		p {
-			font-size: 1.5rem;
-			padding-bottom: 1rem;
-		}
 		svg {
 			color: #fefefe;
 			cursor: pointer;
+		}
+	}
+	p {
+		font-size: 1.5rem;
+		padding-bottom: 1rem;
+	}
+}
+
+#quiz-page {
+	.quiz-panel {
+		h4 {
+			margin-bottom: 0.5rem;
+		}
+		@include color-panel();
+		.quiz-slider-div {
+			background: $background-light;
+			margin-bottom: 1rem;
+			border-radius: 5px;
 		}
 	}
 }
