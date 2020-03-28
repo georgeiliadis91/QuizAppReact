@@ -45,10 +45,8 @@ const Home = () => {
 
 	return (
 		<div id="home-page">
-			<h2 className="page-title">Αρχική</h2>
-
-			<h3>Λίστα με quiz</h3>
-			<Container>
+			<Container className="quiz-list-home .data-list">
+				<h3>Λίστα με quiz</h3>
 				{loading ? (
 					<ClipLoader
 						css={override}
@@ -58,9 +56,12 @@ const Home = () => {
 					/>
 				) : (
 					quizes.map((quiz, index) => (
+
 						<Link key={index} to={'quiz/' + quiz.id}>
 							<div className="quiz-list-item" key={quiz.id}>
-								<div className="quiz-item-name">{quiz.name}</div>
+								<div className="quiz-item-name">
+									<p>{quiz.name}</p>
+								</div>
 							</div>
 						</Link>
 					))

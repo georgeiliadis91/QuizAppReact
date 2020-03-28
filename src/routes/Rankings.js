@@ -40,7 +40,7 @@ const Rankings = () => {
 
 	return (
 		<div className="rankings-list">
-			<Container>
+			<Container className="quiz-list-home">
 				<h2 className="page-title">Rankings should go here</h2>
 
 				{loading ? (
@@ -51,13 +51,14 @@ const Rankings = () => {
 						loading={loading}
 					/>
 				) : (
-					users.map(user => (
-						<li key={user.id}>
-							<label>
-								Όνομα:
-								{user.name}
-							</label>
-						</li>
+					users.map((user, index) => (
+						<div className="quiz-list-item" key={index}>
+							<div className="quiz-item-name">
+								<p>
+									{index + 1} : {user.name}
+								</p>
+							</div>
+						</div>
 					))
 				)}
 			</Container>

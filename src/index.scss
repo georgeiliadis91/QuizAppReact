@@ -1,5 +1,7 @@
 //=========varialbles=====================
 $text-dark: #3f3f3f;
+$background-dark: #2c8ff1;
+$background-light: #0abde3;
 
 @font-face {
 	font-family: 'FiraSans';
@@ -20,6 +22,39 @@ $text-dark: #3f3f3f;
 	transition: all 150ms ease-in-out;
 	&:hover {
 		box-shadow: 0 0 6px rgba(35, 173, 255, 1);
+	}
+}
+
+@mixin color-panel {
+	background: $background-dark;
+	color: #fff;
+	padding: 1rem 10rem;
+	border-radius: 5px;
+}
+
+@mixin list-block {
+	background: $background-dark;
+	color: #fff;
+	padding: 1rem 10rem;
+	border-radius: 5px;
+
+	h3 {
+		font-size: 2rem;
+	}
+
+	a {
+		text-decoration: none;
+	}
+	.quiz-list-item {
+		background: $background-light;
+		color: #fff;
+		.quiz-item-name {
+			p {
+				color: #fff !important;
+				font-weight: 500;
+				font-size: 1.25rem;
+			}
+		}
 	}
 }
 //========GENERAL RULES=========
@@ -130,10 +165,9 @@ button:active {
 }
 
 .main-navbar {
-	background: #0abde3;
+	background: $background-dark;
 	color: #fefefe;
 	margin-bottom: 3rem;
-
 	#welcome-title {
 		padding-top: 1rem;
 	}
@@ -289,12 +323,19 @@ div.quiz-slider-div {
 //admin dashboard
 #admin-dashboard {
 	font-size: 1.2rem;
-
-	.create-new-quiz {
-		margin-bottom: 2rem;
-		border: solid 1px #555;
-		border-radius: 5px;
-		padding: 1rem 0.5rem;
+	.admin-dashboard-panel {
+		@include color-panel();
+		padding: 2rem;
+		.create-new-quiz {
+			margin-bottom: 2rem;
+			border: solid 1px #f1f1f1;
+			border-radius: 5px;
+			padding: 1rem 0.5rem;
+			background: $background-light;
+		}
+		li {
+			background: $background-light;
+		}
 	}
 
 	::-webkit-scrollbar {
@@ -320,7 +361,9 @@ div.quiz-slider-div {
 	}
 	ul {
 		max-height: 40rem;
-		overflow: scroll;
+		// overflow: scroll;
+		overflow-x: hidden; //horizontal
+		overflow-y: scroll; //vertical
 		padding-right: 1rem;
 
 		li {
@@ -355,11 +398,14 @@ div.quiz-slider-div {
 			font-size: 1.2rem;
 		}
 	}
+	.quiz-list-home {
+		@include list-block();
+	}
 }
 
 .rankings-list {
-	li {
-		@include displayList();
+	.quiz-list-home {
+		@include color-panel();
 	}
 }
 
@@ -372,4 +418,19 @@ div.quiz-slider-div {
 	box-shadow: 0 3px 12px 0 #e2e5e8;
 	padding: 4rem 1.25rem 2rem;
 	margin-bottom: 2rem;
+}
+
+.quiz-edit-block {
+	@include color-panel();
+	.add-new-question {
+		margin-bottom: 1rem;
+		p {
+			font-size: 1.5rem;
+			padding-bottom: 1rem;
+		}
+		svg {
+			color: #fefefe;
+			cursor: pointer;
+		}
+	}
 }

@@ -75,15 +75,12 @@ const Dashboard = ({ history }) => {
 
 	return (
 		<div id="admin-dashboard">
-			<h2 className="page-title">Πάνελ Διαχείρησης</h2>
-			<Container>
+			<Container className="admin-dashboard-panel">
+				<h2 className="page-title">Πάνελ Διαχείρησης</h2>
 				<div className="create-new-quiz">
 					<h3>Δημιουργία νέου Quiz</h3>
 					<form onSubmit={handleSubmit}>
-						<label>
-							Όνομα
-							<input name="name" type="name" placeholder="Εισάγετε όνομα..." />
-						</label>
+						<input name="name" type="name" placeholder="Εισάγετε όνομα..." />
 						<button type="submit">Δημιουργία</button>
 					</form>
 				</div>

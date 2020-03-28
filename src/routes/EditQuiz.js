@@ -4,6 +4,7 @@ import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 import { Container, Row, Col } from 'react-grid';
+import { FiPlusCircle } from 'react-icons/fi';
 // import FormRadioBtn from '../components/FormRadioBtn';
 
 // TODO NEEN TO HANDLE THE ONCHANGE FOR EACH FIELD. INDEX MIGHT BE USEFULL
@@ -131,7 +132,7 @@ const EditQuiz = ({ match }) => {
 	//==================render===========================
 
 	return (
-		<Container>
+		<Container className="quiz-edit-block">
 			<h2 className="page-title">ID: {id}</h2>
 			<ul>
 				{loading ? (
@@ -144,15 +145,13 @@ const EditQuiz = ({ match }) => {
 				) : (
 					<div id="admin-quiz-creation-form">
 						<form onSubmit={handleSubmit}>
-							<label>
-								Quiz name:
-								<input
-									name="name"
-									type="text"
-									value={name}
-									onChange={event => handmeNameChange(event)}
-								/>
-							</label>
+							<h2>Όνομα Quiz</h2>
+							<input
+								name="name"
+								type="text"
+								value={name}
+								onChange={event => handmeNameChange(event)}
+							/>
 							<br />
 							<br />
 							{quiz.questions.map((question, index) => (
@@ -314,17 +313,18 @@ const EditQuiz = ({ match }) => {
 										</label>
 									</div> */}
 									<button onClick={() => handleRemoveFields(index)}>
-										Remove Question
+										Αφαίρεση Ερώτησης
 									</button>
 								</div>
 							))}
 							<br />
-							<button type="submit">Submit Changes</button>
+							<div className="add-new-question">
+								<p>Προσθήκη Νέας Ερώτησης.</p>
+								<FiPlusCircle size="3rem" onClick={() => handleAddQuestion()} />
+							</div>
+							<button type="submit">Submit</button>
 						</form>
 						<br />
-						<button onClick={() => handleAddQuestion()}>
-							Add new question{' '}
-						</button>
 					</div>
 				)}
 			</ul>

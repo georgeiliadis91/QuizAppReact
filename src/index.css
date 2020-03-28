@@ -99,7 +99,7 @@ button:active {
 }
 
 .main-navbar {
-  background: #0abde3;
+  background: #2c8ff1;
   color: #fefefe;
   margin-bottom: 3rem;
 }
@@ -242,11 +242,22 @@ div.quiz-slider-div .quiz-answer {
   /* Handle */
   /* Handle on hover */
 }
-#admin-dashboard .create-new-quiz {
+#admin-dashboard .admin-dashboard-panel {
+  background: #2c8ff1;
+  color: #fff;
+  padding: 1rem 10rem;
+  border-radius: 5px;
+  padding: 2rem;
+}
+#admin-dashboard .admin-dashboard-panel .create-new-quiz {
   margin-bottom: 2rem;
-  border: solid 1px #555;
+  border: solid 1px #f1f1f1;
   border-radius: 5px;
   padding: 1rem 0.5rem;
+  background: #0abde3;
+}
+#admin-dashboard .admin-dashboard-panel li {
+  background: #0abde3;
 }
 #admin-dashboard ::-webkit-scrollbar {
   width: 10px;
@@ -265,7 +276,8 @@ div.quiz-slider-div .quiz-answer {
 }
 #admin-dashboard ul {
   max-height: 40rem;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   padding-right: 1rem;
 }
 #admin-dashboard ul li {
@@ -318,20 +330,33 @@ div.quiz-slider-div .quiz-answer {
   color: #333;
   font-size: 1.2rem;
 }
-
-.rankings-list li {
-  border: solid 1px #ccc;
-  margin: 1rem 0.15rem;
-  padding: 1rem 0.5rem;
+#home-page .quiz-list-home {
+  background: #2c8ff1;
+  color: #fff;
+  padding: 1rem 10rem;
   border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  transition: all 150ms ease-in-out;
 }
-.rankings-list li:hover {
-  box-shadow: 0 0 6px #23adff;
+#home-page .quiz-list-home h3 {
+  font-size: 2rem;
+}
+#home-page .quiz-list-home a {
+  text-decoration: none;
+}
+#home-page .quiz-list-home .quiz-list-item {
+  background: #0abde3;
+  color: #fff;
+}
+#home-page .quiz-list-home .quiz-list-item .quiz-item-name p {
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.rankings-list .quiz-list-home {
+  background: #2c8ff1;
+  color: #fff;
+  padding: 1rem 10rem;
+  border-radius: 5px;
 }
 
 #admin-quiz-creation-form {
@@ -343,6 +368,24 @@ div.quiz-slider-div .quiz-answer {
   box-shadow: 0 3px 12px 0 #e2e5e8;
   padding: 4rem 1.25rem 2rem;
   margin-bottom: 2rem;
+}
+
+.quiz-edit-block {
+  background: #2c8ff1;
+  color: #fff;
+  padding: 1rem 10rem;
+  border-radius: 5px;
+}
+.quiz-edit-block .add-new-question {
+  margin-bottom: 1rem;
+}
+.quiz-edit-block .add-new-question p {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+.quiz-edit-block .add-new-question svg {
+  color: #fefefe;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.css.map */
