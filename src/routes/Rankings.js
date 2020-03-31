@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
-
+import DataTable from 'react-data-table-component';
 import { Container } from 'react-grid';
+import { useAlert } from 'react-alert';
 
 const override = css`
 	display: block;
@@ -11,23 +12,45 @@ const override = css`
 	border-color: #0abde3;
 `;
 
+const columns = [
+	{
+		name: 'Name',
+		selector: 'name',
+		sortable: true
+	},
+	{
+		name: 'Average',
+		selector: 'average',
+		sortable: true
+	},
+	{
+		name: 'Total',
+		selector: 'total',
+		sortable: true,
+		right: true
+	}
+];
+
 const Rankings = () => {
-	const [users, setUsers] = useState([]);
+	const alert = useAlert();
+	const [rankings, setRankings] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setUsers([]);
+		setRankings([]);
 		axios
-			.get(process.env.REACT_APP_BASE_URL + '/users')
+			.get(process.env.REACT_APP_BASE_URL + '/results/rankings')
 			.then(res => {
-				const users = res.data;
+				const rankings = res.data;
 
-				users.map(user => {
-					return setUsers(previousUsers => [
+				rankings.map(rank => {
+					return setRankings(previousUsers => [
 						...previousUsers,
 						{
-							id: user._id,
-							name: user.name
+							name: rank.name,
+							total: rank.total,
+							average: rank.average,
+							id: rank.firebase_id
 						}
 					]);
 				});
@@ -51,15 +74,7 @@ const Rankings = () => {
 						loading={loading}
 					/>
 				) : (
-					users.map((user, index) => (
-						<div className="quiz-list-item" key={index}>
-							<div className="quiz-item-name">
-								<p>
-									{index + 1} : {user.name}
-								</p>
-							</div>
-						</div>
-					))
+					<DataTable title="LeaderBoard" columns={columns} data={rankings} />
 				)}
 			</Container>
 		</div>
