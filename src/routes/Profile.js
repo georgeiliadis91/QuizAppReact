@@ -77,7 +77,7 @@ const Profile = () => {
 
 	return (
 		<div id="user-profile">
-			<Container>
+			<Container className="user-profile-block">
 				<div className="title-wrapper">
 					<h2 className="page-title">Προφίλ Χρήστη</h2>
 				</div>

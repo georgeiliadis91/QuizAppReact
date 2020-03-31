@@ -132,24 +132,24 @@ h2.page-title {
   text-align: left;
   color: #3f3f3f;
 }
-#user-profile .css-2z7i4f-Container {
+#user-profile .user-profile-block {
   padding: 0;
 }
-#user-profile .css-2z7i4f-Container .title-wrapper {
+#user-profile .user-profile-block .title-wrapper {
   background: red;
   padding: 1.5rem;
 }
-#user-profile .css-2z7i4f-Container .title-wrapper h2 {
+#user-profile .user-profile-block .title-wrapper h2 {
   color: #fff;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1rem;
   margin: auto;
   max-width: 400px;
 }
-#user-profile .css-2z7i4f-Container .css-1gqikdj-Row {
+#user-profile .user-profile-block .css-1gqikdj-Row {
   margin: 0 !important;
 }
-#user-profile .css-2z7i4f-Container .user-data {
+#user-profile .user-profile-block .user-data {
   border-right: 1px solid #ccc;
   border-radius: 5px;
   padding: 2rem 0;
@@ -157,71 +157,71 @@ h2.page-title {
   margin: 0 !important;
   text-align: left;
 }
-#user-profile .css-2z7i4f-Container .user-data .user-account-block {
+#user-profile .user-profile-block .user-data .user-account-block {
   padding: 0 0.75rem;
 }
-#user-profile .css-2z7i4f-Container .user-data .user-account-block p {
+#user-profile .user-profile-block .user-data .user-account-block p {
   text-align: left;
   line-height: 1.6;
 }
-#user-profile .css-2z7i4f-Container .user-data .user-account-block p svg {
+#user-profile .user-profile-block .user-data .user-account-block p svg {
   height: 1.5rem;
   padding-left: 0.25rem;
   transform: translate(0, 25%);
 }
-#user-profile .css-2z7i4f-Container .user-data h3 {
+#user-profile .user-profile-block .user-data h3 {
   margin-bottom: 2rem;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1rem;
 }
-#user-profile .css-2z7i4f-Container .user-data #password-change {
+#user-profile .user-profile-block .user-data #password-change {
   border-top: solid 1px #e0e0e0;
   margin-top: 2rem;
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
 }
-#user-profile .css-2z7i4f-Container .user-data form {
+#user-profile .user-profile-block .user-data form {
   text-align: left;
   margin: 0;
   padding: 0 0.75rem;
 }
-#user-profile .css-2z7i4f-Container .user-data form label {
+#user-profile .user-profile-block .user-data form label {
   padding-left: 0.75rem;
 }
-#user-profile .css-2z7i4f-Container .user-data form input {
+#user-profile .user-profile-block .user-data form input {
   width: 100%;
 }
-#user-profile .css-2z7i4f-Container .user-data form button {
+#user-profile .user-profile-block .user-data form button {
   float: right;
 }
-#user-profile .css-2z7i4f-Container .user-stats {
+#user-profile .user-profile-block .user-stats {
   padding: 2rem;
 }
-#user-profile .css-2z7i4f-Container .user-stats h3 {
+#user-profile .user-profile-block .user-stats h3 {
   font-size: 1.6rem;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
 }
-#user-profile .css-2z7i4f-Container .user-stats div.totals-wrapper {
+#user-profile .user-profile-block .user-stats div.totals-wrapper {
   margin-bottom: 1rem;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 2rem;
   line-height: 1.6;
 }
-#user-profile .css-2z7i4f-Container .user-stats div.totals-wrapper p {
+#user-profile .user-profile-block .user-stats div.totals-wrapper p {
   text-align: left;
   font-size: 1.5rem;
 }
-#user-profile .css-2z7i4f-Container .user-stats ul li {
+#user-profile .user-profile-block .user-stats ul li {
   text-align: left;
   padding: 0.5rem 0.25rem;
 }
-#user-profile .css-2z7i4f-Container .user-stats ul li:nth-child(odd) {
+#user-profile .user-profile-block .user-stats ul li:nth-child(odd) {
   background: #fffbd7;
 }
-#user-profile .css-2z7i4f-Container .user-stats ul li:nth-child(even) {
+#user-profile .user-profile-block .user-stats ul li:nth-child(even) {
   background: #fffdef;
 }
 
