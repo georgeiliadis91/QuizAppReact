@@ -4,7 +4,7 @@ const FormRadioBtn = ({ correctAnswer, index, setCorrectAnswer }) => {
 	return (
 		<div
 			id={'radio-group' + index}
-			onChange={event => setCorrectAnswer(index, event)}
+			onChange={(event) => setCorrectAnswer(index, event)}
 		>
 			<input
 				type="radio"

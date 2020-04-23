@@ -6,6 +6,14 @@ import 'react-animated-slider/build/horizontal.css';
 import { Container, Row, Col } from 'react-grid';
 import { useAlert } from 'react-alert';
 import { AuthContext } from '../contexts/Auth';
+import {
+	CarouselProvider,
+	Slider,
+	Slide,
+	ButtonBack,
+	ButtonNext,
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const override = css`
 	display: block;
@@ -25,16 +33,16 @@ const Quiz = ({ match }) => {
 	// console.log(currentUser);
 
 	const handleSubmit = useCallback(
-		event => {
+		(event) => {
 			event.preventDefault();
 
 			axios
 				.post(process.env.REACT_APP_BASE_URL + '/quizes/submit/' + id, {
 					answers: answers,
 					firebase_id: currentUser.uid,
-					quiz_id: id
+					quiz_id: id,
 				})
-				.then(res => {
+				.then((res) => {
 					setLoading(true);
 					if (res.data.status) {
 						alert.success(res.data.message);
@@ -42,7 +50,7 @@ const Quiz = ({ match }) => {
 						alert.error(res.data.message);
 					}
 				})
-				.catch(err => {
+				.catch((err) => {
 					alert.error(err.message);
 				});
 		},
@@ -52,16 +60,16 @@ const Quiz = ({ match }) => {
 	useEffect(() => {
 		axios
 			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
-			.then(res => {
+			.then((res) => {
 				const quiz = res.data;
 				setQuiz({
 					id: quiz._id,
 					name: quiz.name,
-					questions: quiz.questions
+					questions: quiz.questions,
 				});
 				setLoading(false);
 			})
-			.catch(error => {
+			.catch((error) => {
 				alert.error(error.message);
 			});
 	}, [loading]);
@@ -79,16 +87,17 @@ const Quiz = ({ match }) => {
 	useEffect(() => {
 		axios
 			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
-			.then(res => {
+			.then((res) => {
 				const quiz = res.data;
 				setQuiz({
 					id: quiz._id,
 					name: quiz.name,
-					questions: quiz.questions
+					questions: quiz.questions,
 				});
 				setLoading(false);
+				console.log(quiz.questions.length);
 			})
-			.catch(error => {
+			.catch((error) => {
 				alert.error(error.message);
 			});
 	}, [loading]);
@@ -105,60 +114,70 @@ const Quiz = ({ match }) => {
 						loading={loading}
 					/>
 				) : (
-					<form onSubmit={handleSubmit}>
-						{quiz.questions.map((question, index) => (
-							<div key={index} className="quiz-slider-div">
-								<Row>
-									<Col xs={12}>
-										<h4>Ερώτηση:</h4>
-										<div className="quiz-question">
-											{question.questionTitle}
+					<CarouselProvider
+						naturalSlideWidth={100}
+						naturalSlideHeight={95}
+						totalSlides={quiz.questions.length}
+					>
+						<ButtonBack>Back</ButtonBack>
+						<ButtonNext>Next</ButtonNext>
+						<form onSubmit={handleSubmit}>
+							<Slider>
+								{quiz.questions.map((question, index) => (
+									<Slide index={index} key={index} className="quiz-slider-div">
+										<Row>
+											<Col xs={12}>
+												<h4>Ερώτηση:</h4>
+												<div className="quiz-question">
+													{question.questionTitle}
+												</div>
+											</Col>
+										</Row>
+										<div
+											id={'radio-group' + index}
+											onChange={(event) => setCorrectAnswer(index, event)}
+										>
+											<Row>
+												<Col md={3}>
+													<label>{question.answerA}</label>
+													<input
+														type="radio"
+														value={1}
+														name={'radio-group' + index}
+													/>
+												</Col>
+												<Col md={3}>
+													<label>{question.answerB}</label>
+													<input
+														type="radio"
+														value={2}
+														name={'radio-group' + index}
+													/>
+												</Col>
+												<Col md={3}>
+													<label>{question.answerC}</label>
+													<input
+														type="radio"
+														value={3}
+														name={'radio-group' + index}
+													/>
+												</Col>
+												<Col md={3}>
+													<label>{question.answerD}</label>
+													<input
+														type="radio"
+														value={4}
+														name={'radio-group' + index}
+													/>
+												</Col>
+											</Row>
 										</div>
-									</Col>
-								</Row>
-								<div
-									id={'radio-group' + index}
-									onChange={event => setCorrectAnswer(index, event)}
-								>
-									<Row>
-										<Col md={3}>
-											<label>{question.answerA}</label>
-											<input
-												type="radio"
-												value={1}
-												name={'radio-group' + index}
-											/>
-										</Col>
-										<Col md={3}>
-											<label>{question.answerB}</label>
-											<input
-												type="radio"
-												value={2}
-												name={'radio-group' + index}
-											/>
-										</Col>
-										<Col md={3}>
-											<label>{question.answerC}</label>
-											<input
-												type="radio"
-												value={3}
-												name={'radio-group' + index}
-											/>
-										</Col>
-										<Col md={3}>
-											<label>{question.answerD}</label>
-											<input
-												type="radio"
-												value={4}
-												name={'radio-group' + index}
-											/>
-										</Col>
-									</Row>
-								</div>
-							</div>
-						))}
-						<button type="submit">Ολοκλήρωση</button>
-					</form>
+									</Slide>
+								))}
+							</Slider>
+							<button type="submit">Ολοκλήρωση</button>
+						</form>
+					</CarouselProvider>
 				)}
 			</Container>
 		</div>
