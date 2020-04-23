@@ -402,7 +402,17 @@ div.quiz-slider-div .quiz-answer {
   padding: 1rem 10rem;
   border-radius: 5px;
 }
-#quiz-page .quiz-panel h4 {
+#quiz-page .quiz-panel p {
+  padding: 1rem 0;
+  font-size: 1rem;
+}
+#quiz-page .quiz-panel .quiz-btn-row {
+  padding-bottom: 2rem;
+}
+#quiz-page .quiz-panel .question-title {
+  padding: 2rem 0;
+}
+#quiz-page .quiz-panel .question-title h4 {
   margin-bottom: 0.5rem;
 }
 #quiz-page .quiz-panel .quiz-slider-div {

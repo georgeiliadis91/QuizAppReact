@@ -95,7 +95,6 @@ const Quiz = ({ match }) => {
 					questions: quiz.questions,
 				});
 				setLoading(false);
-				console.log(quiz.questions.length);
 			})
 			.catch((error) => {
 				alert.error(error.message);
@@ -116,20 +115,28 @@ const Quiz = ({ match }) => {
 				) : (
 					<CarouselProvider
 						naturalSlideWidth={100}
-						naturalSlideHeight={95}
+						naturalSlideHeight={50}
+						dragEnabled={false}
 						totalSlides={quiz.questions.length}
 					>
-						<ButtonBack>Back</ButtonBack>
-						<ButtonNext>Next</ButtonNext>
+						<div className="quiz-btn-row">
+							<ButtonBack>Πίσω</ButtonBack>
+							<ButtonNext>Επόμενο</ButtonNext>
+						</div>
 						<form onSubmit={handleSubmit}>
 							<Slider>
 								{quiz.questions.map((question, index) => (
 									<Slide index={index} key={index} className="quiz-slider-div">
+										<p>
+											Ερώτηση {index + 1} απο {quiz.questions.length}
+										</p>
 										<Row>
 											<Col xs={12}>
-												<h4>Ερώτηση:</h4>
-												<div className="quiz-question">
-													{question.questionTitle}
+												<div className="question-title">
+													<h4>Ερώτηση:</h4>
+													<div className="quiz-question">
+														{question.questionTitle}
+													</div>
 												</div>
 											</Col>
 										</Row>

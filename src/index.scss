@@ -443,8 +443,18 @@ div.quiz-slider-div {
 
 #quiz-page {
 	.quiz-panel {
-		h4 {
-			margin-bottom: 0.5rem;
+		p {
+			padding: 1rem 0;
+			font-size: 1rem;
+		}
+		.quiz-btn-row {
+			padding-bottom: 2rem;
+		}
+		.question-title {
+			padding: 2rem 0;
+			h4 {
+				margin-bottom: 0.5rem;
+			}
 		}
 		@include color-panel();
 		.quiz-slider-div {
