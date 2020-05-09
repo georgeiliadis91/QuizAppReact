@@ -14,10 +14,11 @@ import Quiz from './routes/Quiz';
 import Menu from './components/Menu';
 import Rankings from './routes/Rankings';
 import Profile from './routes/Profile';
+import ForgotPassword from './routes/ForgotPassword';
 
 const options = {
 	timeout: 5000,
-	position: positions.BOTTOM_CENTER
+	position: positions.BOTTOM_CENTER,
 };
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
 						<PrivateRoute exact path="/quiz/:id" component={Quiz} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/signup" component={SignUp} />
+						<Route exact path="/forgotpassword" component={ForgotPassword} />
 						<Route exact path="*" component={NotFound} />
 					</Switch>
 				</Router>

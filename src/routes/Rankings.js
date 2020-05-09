@@ -16,19 +16,19 @@ const columns = [
 	{
 		name: 'Name',
 		selector: 'name',
-		sortable: true
+		sortable: true,
 	},
 	{
 		name: 'Average',
 		selector: 'average',
-		sortable: true
+		sortable: true,
 	},
 	{
 		name: 'Total',
 		selector: 'total',
 		sortable: true,
-		right: true
-	}
+		right: true,
+	},
 ];
 
 const Rankings = () => {
@@ -40,23 +40,23 @@ const Rankings = () => {
 		setRankings([]);
 		axios
 			.get(process.env.REACT_APP_BASE_URL + '/results/rankings')
-			.then(res => {
+			.then((res) => {
 				const rankings = res.data;
 
-				rankings.map(rank => {
-					return setRankings(previousUsers => [
+				rankings.map((rank) => {
+					return setRankings((previousUsers) => [
 						...previousUsers,
 						{
 							name: rank.name,
 							total: rank.total,
 							average: rank.average,
-							id: rank.firebase_id
-						}
+							id: rank.firebase_id,
+						},
 					]);
 				});
 				setLoading(false);
 			})
-			.catch(error => {
+			.catch((error) => {
 				alert.error(error.message);
 			});
 	}, [loading]);
@@ -74,7 +74,7 @@ const Rankings = () => {
 						loading={loading}
 					/>
 				) : (
-					<DataTable title="LeaderBoard" columns={columns} data={rankings} />
+					<DataTable title="Κατάταξη" columns={columns} data={rankings} />
 				)}
 			</Container>
 		</div>

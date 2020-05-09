@@ -12,7 +12,7 @@ const Login = ({ history }) => {
 	const alert = useAlert();
 
 	const handleLogin = useCallback(
-		async event => {
+		async (event) => {
 			event.preventDefault();
 			const { email, password } = event.target.elements;
 			try {
@@ -35,19 +35,19 @@ const Login = ({ history }) => {
 			await app
 				.auth()
 				.signInWithPopup(provider)
-				.then(user => {
+				.then((user) => {
 					//Getting user data as a response and then pushing the user data that is userfull on our backend
 
 					axios
 						.post(process.env.REACT_APP_BASE_URL + '/users', {
 							name: user.user.displayName,
 							email: user.user.email,
-							firebase_id: user.user.uid
+							firebase_id: user.user.uid,
 						})
-						.then(response => {
+						.then((response) => {
 							console.log(response);
 						})
-						.catch(error => {
+						.catch((error) => {
 							console.log(error.message);
 						});
 				});
@@ -64,7 +64,7 @@ const Login = ({ history }) => {
 			await app
 				.auth()
 				.signInWithPopup(provider)
-				.then(user => {
+				.then((user) => {
 					//Getting user data as a response and then pushing the user data that is userfull on our backend
 					let email;
 
@@ -79,12 +79,12 @@ const Login = ({ history }) => {
 						.post(process.env.REACT_APP_BASE_URL + '/users', {
 							name: user.user.displayName,
 							email: email,
-							firebase_id: user.user.uid
+							firebase_id: user.user.uid,
 						})
-						.then(response => {
+						.then((response) => {
 							console.log(response);
 						})
-						.catch(error => {
+						.catch((error) => {
 							console.log(error.message);
 						});
 				});
@@ -115,6 +115,8 @@ const Login = ({ history }) => {
 				<button type="submit">Είσοδος</button>
 			</form>
 			{/* <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={app.auth()} /> */}
+			<br />
+			<Link to="/forgotpassword">Εχω ξεχάσει τον κωδικό μου</Link>
 			<br />
 			<div className="social-login-block">
 				<div className="social-login-btn" onClick={() => handleGoogleLogin()}>

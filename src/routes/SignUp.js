@@ -12,7 +12,7 @@ const SignUp = ({ history }) => {
 	const { currentUser } = useContext(AuthContext);
 
 	const handleSignUp = useCallback(
-		async event => {
+		async (event) => {
 			event.preventDefault();
 			const { email, password, password2 } = event.target.elements;
 
@@ -21,7 +21,7 @@ const SignUp = ({ history }) => {
 					await app
 						.auth()
 						.createUserWithEmailAndPassword(email.value, password.value)
-						.then(user => {
+						.then((user) => {
 							//Getting user data as a response and then pushing the user data that is userfull on our backend
 							let username;
 							if (user.user.displayName === null) {
@@ -31,12 +31,12 @@ const SignUp = ({ history }) => {
 								.post(process.env.REACT_APP_BASE_URL + '/users', {
 									name: username,
 									email: email.value,
-									firebase_id: user.user.uid
+									firebase_id: user.user.uid,
 								})
-								.then(response => {
+								.then((response) => {
 									console.log(response);
 								})
-								.catch(error => {
+								.catch((error) => {
 									console.log(error.message);
 								});
 						});
@@ -78,6 +78,7 @@ const SignUp = ({ history }) => {
 				</label>
 				<button type="submit">Εγγραφή</button>
 			</form>
+			<br />
 			<Link to="/login">Έχετε ήδη λογαριασμό?</Link>
 		</Container>
 	);

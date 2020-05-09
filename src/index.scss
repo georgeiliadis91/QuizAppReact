@@ -427,6 +427,22 @@ div.quiz-slider-div {
 		@include color-panel();
 		background: $background-light;
 		margin-bottom: 1rem;
+		.remove-new-question {
+			margin-bottom: 1rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: end;
+
+			p {
+				font-size: 1.3rem;
+				margin-right: 0.5rem;
+			}
+
+			svg {
+				color: orangered;
+				cursor: pointer;
+			}
+		}
 	}
 	.add-new-question {
 		margin-bottom: 1rem;
@@ -448,6 +464,14 @@ div.quiz-slider-div {
 			font-size: 1rem;
 		}
 		.quiz-btn-row {
+			display: inline; // display: flex;
+			// justify-content: space-between;
+			.btn-next {
+				float: right;
+			}
+			.btn-back {
+				float: left;
+			}
 			padding-bottom: 2rem;
 		}
 		.question-title {

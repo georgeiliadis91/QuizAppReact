@@ -4,7 +4,7 @@ import { useAlert } from 'react-alert';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/core';
 import { Container, Row, Col } from 'react-grid';
-import { FiPlusCircle } from 'react-icons/fi';
+import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
 // import FormRadioBtn from '../components/FormRadioBtn';
 
 // TODO NEEN TO HANDLE THE ONCHANGE FOR EACH FIELD. INDEX MIGHT BE USEFULL
@@ -34,25 +34,25 @@ const EditQuiz = ({ match }) => {
 	const handleAddQuestion = () => {
 		const values = quiz.questions;
 		values.push({});
-		setQuiz(previousValues => ({
+		setQuiz((previousValues) => ({
 			...previousValues,
-			questions: values
+			questions: values,
 		}));
 	};
 
-	const handleRemoveFields = index => {
+	const handleRemoveFields = (index) => {
 		const values = quiz.questions;
 		values.splice(index, 1);
 
 		setQuiz({
 			...quiz,
-			questions: values
+			questions: values,
 		});
 	};
 
 	//==================================field data manipulation======================================
 
-	const handmeNameChange = event => {
+	const handmeNameChange = (event) => {
 		setQuiz({ ...quiz, name: event.target.value });
 	};
 
@@ -92,39 +92,39 @@ const EditQuiz = ({ match }) => {
 	//==================================Submit======================================
 
 	const handleSubmit = useCallback(
-		event => {
+		(event) => {
 			event.preventDefault();
 			// console.log(quiz);
 
 			axios
 				.patch(process.env.REACT_APP_BASE_URL + '/quizes/' + id, quiz)
-				.then(res => {
+				.then((res) => {
 					setLoading(true);
 					console.log(res.data);
 				})
-				.catch(err => {
+				.catch((err) => {
 					alert.error(err.message);
 				});
 		},
-		[quiz]
+		[quiz, id, alert]
 	);
 
 	//==================================useEffect======================================
 	useEffect(() => {
 		axios
 			.get(process.env.REACT_APP_BASE_URL + '/quizes/' + id)
-			.then(res => {
+			.then((res) => {
 				const quiz = res.data;
 
 				setQuiz({
 					id: quiz._id,
 					name: quiz.name,
-					questions: quiz.questions
+					questions: quiz.questions,
 				});
 
 				setLoading(false);
 			})
-			.catch(error => {
+			.catch((error) => {
 				alert.error(error.message);
 			});
 	}, [loading]);
@@ -150,18 +150,25 @@ const EditQuiz = ({ match }) => {
 								name="name"
 								type="text"
 								value={name}
-								onChange={event => handmeNameChange(event)}
+								onChange={(event) => handmeNameChange(event)}
 							/>
 							<br />
 							<br />
 							{quiz.questions.map((question, index) => (
 								<div key={index} className="question-row">
-									<p>Question:</p>
+									<div className="remove-new-question">
+										<p>Αφαίρεση Ερώτησης.</p>
+										<FiMinusCircle
+											size="1.5rem"
+											onClick={() => handleRemoveFields(index)}
+										/>
+									</div>
+									<p>Ερώτηση:</p>
 									<input
 										name="questionTitle"
 										type="text"
 										value={question.questionTitle}
-										onChange={event => handleInputChange(index, event)}
+										onChange={(event) => handleInputChange(index, event)}
 									/>
 									<Row>
 										<Col md={6}>
@@ -171,7 +178,7 @@ const EditQuiz = ({ match }) => {
 													name="answerA"
 													type="text"
 													value={question.answerA}
-													onChange={event => handleInputChange(index, event)}
+													onChange={(event) => handleInputChange(index, event)}
 												/>
 											</label>
 										</Col>
@@ -182,7 +189,7 @@ const EditQuiz = ({ match }) => {
 													name="answerB"
 													type="text"
 													value={question.answerB}
-													onChange={event => handleInputChange(index, event)}
+													onChange={(event) => handleInputChange(index, event)}
 												/>
 											</label>
 										</Col>
@@ -195,7 +202,7 @@ const EditQuiz = ({ match }) => {
 													name="answerC"
 													type="text"
 													value={question.answerC}
-													onChange={event => handleInputChange(index, event)}
+													onChange={(event) => handleInputChange(index, event)}
 												/>
 											</label>
 										</Col>
@@ -206,7 +213,7 @@ const EditQuiz = ({ match }) => {
 													name="answerD"
 													type="text"
 													value={question.answerD}
-													onChange={event => handleInputChange(index, event)}
+													onChange={(event) => handleInputChange(index, event)}
 												/>
 											</label>
 										</Col>
@@ -219,7 +226,7 @@ const EditQuiz = ({ match }) => {
 
 									<div
 										id={'radio-group' + index}
-										onChange={event => setCorrectAnswer(index, event)}
+										onChange={(event) => setCorrectAnswer(index, event)}
 									>
 										<Row>
 											<Col md={3}>
@@ -310,9 +317,9 @@ const EditQuiz = ({ match }) => {
 											Option 4
 										</label>
 									</div> */}
-									<button onClick={() => handleRemoveFields(index)}>
+									{/* <button onClick={() => handleRemoveFields(index)}>
 										Αφαίρεση Ερώτησης
-									</button>
+									</button> */}
 								</div>
 							))}
 							<br />
@@ -320,7 +327,7 @@ const EditQuiz = ({ match }) => {
 								<p>Προσθήκη Νέας Ερώτησης.</p>
 								<FiPlusCircle size="3rem" onClick={() => handleAddQuestion()} />
 							</div>
-							<button type="submit">Submit</button>
+							<button type="submit">Ολοκλήρωση</button>
 						</form>
 						<br />
 					</div>
