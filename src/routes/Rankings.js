@@ -35,6 +35,18 @@ const Rankings = () => {
 	const alert = useAlert();
 	const [rankings, setRankings] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [searchValue, setSearchValue] = useState('');
+	const [tempData, setTempData] = useState();
+
+	const filterTableData = (event) => {
+		setTempData(rankings);
+		setSearchValue(event.target.value);
+
+		var tempRankings = rankings.filter((searchData) => {
+			return searchData.name.includes(event.target.value);
+		});
+		setTempData(tempRankings);
+	};
 
 	useEffect(() => {
 		setRankings([]);
@@ -55,6 +67,7 @@ const Rankings = () => {
 					]);
 				});
 				setLoading(false);
+				setTempData(rankings);
 			})
 			.catch((error) => {
 				alert.error(error.message);
@@ -74,7 +87,19 @@ const Rankings = () => {
 						loading={loading}
 					/>
 				) : (
-					<DataTable title="Κατάταξη" columns={columns} data={rankings} />
+					<div>
+						<label>
+							Αναζήτηση
+							<input
+								name="search"
+								type="text"
+								value={searchValue}
+								placeholder="Αναζήτηση"
+								onChange={(event) => filterTableData(event)}
+							/>
+						</label>
+						<DataTable title="Κατάταξη" columns={columns} data={tempData} />
+					</div>
 				)}
 			</Container>
 		</div>

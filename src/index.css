@@ -388,7 +388,7 @@ div.quiz-slider-div .quiz-answer {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .quiz-edit-block .question-row .remove-new-question p {
   font-size: 1.3rem;
