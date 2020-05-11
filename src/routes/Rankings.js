@@ -99,7 +99,7 @@ const Rankings = () => {
 								onChange={(event) => filterTableData(event)}
 							/>
 							<h3 >Κατάταξη</h3>
-							<DataTable className="rankings-data-table" noHeader columns={columns} data={tempData} />
+							<DataTable className="rankings-data-table" noHeader columns={columns} data={tempData} defaultSortField="total" defaultSortAsc={false} />
 						</div>
 					)}
 			</Container>
