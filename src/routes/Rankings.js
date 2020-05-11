@@ -87,9 +87,10 @@ const Rankings = () => {
 						loading={loading}
 					/>
 				) : (
-					<div>
-						<label>
-							Αναζήτηση
+						<div className="rankings-block">
+							<label>
+								Αναζήτηση
+								</label>
 							<input
 								name="search"
 								type="text"
@@ -97,10 +98,10 @@ const Rankings = () => {
 								placeholder="Αναζήτηση"
 								onChange={(event) => filterTableData(event)}
 							/>
-						</label>
-						<DataTable title="Κατάταξη" columns={columns} data={tempData} />
-					</div>
-				)}
+							<h3 >Κατάταξη</h3>
+							<DataTable className="rankings-data-table" noHeader columns={columns} data={tempData} />
+						</div>
+					)}
 			</Container>
 		</div>
 	);

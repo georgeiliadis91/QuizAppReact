@@ -488,3 +488,19 @@ div.quiz-slider-div {
 		}
 	}
 }
+
+//======ranking data table=========
+
+.rankings-block{
+	h3,label{
+		font-size:1.5rem;
+		margin-bottom:1rem;
+	}
+	.rankings-data-table{
+		.rdt_TableRow,.rdt_TableCol{
+			
+			font-size:1rem;
+		}
+	}
+	
+}
