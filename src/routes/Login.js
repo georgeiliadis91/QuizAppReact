@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
-import app, { uiConfig } from '../firebase/firebase';
+import app from '../firebase/firebase';
 import { AuthContext } from '../contexts/Auth';
 import { Container } from 'react-grid';
 import * as firebase from 'firebase';
