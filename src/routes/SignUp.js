@@ -34,11 +34,22 @@ const SignUp = ({ history }) => {
 									firebase_id: user.user.uid,
 								})
 								.then((response) => {
-									console.log(response);
+									// console.log(response);
+									var user = app.auth().currentUser;
+
+									user
+										.sendEmailVerification()
+										.then(() => {
+											alert.success('Please check your email for verification');
+										})
+										.catch((error) => {
+											console.log(error.message);
+										});
 								})
 								.catch((error) => {
 									console.log(error.message);
 								});
+							//Send verification mail.
 						});
 
 					history.push('/');
